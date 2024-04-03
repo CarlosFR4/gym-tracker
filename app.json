@@ -1,5 +1,6 @@
 {
   "expo": {
+    "scheme": "acme",
     "name": "gym-tracker",
     "slug": "gym-tracker",
     "version": "1.0.0",
@@ -11,6 +12,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "plugins": [
+      "expo-router"
+    ],
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -24,7 +28,8 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
     }
   }
 }
