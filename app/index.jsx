@@ -1,3 +1,4 @@
+import React from 'react'
 import {Text, SafeAreaView, View} from 'react-native'
 import {Stack} from 'expo-router'
 import styles from './index.style'
