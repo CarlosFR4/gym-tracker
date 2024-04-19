@@ -1,0 +1,12 @@
+{
+  "presets": ["babel-preset-expo"],
+  "plugins": [
+    ["module-resolver", {
+      "root": ["./"],
+      "alias": {
+        "@components": "./src/components"
+      },
+      "extensions": [".js", ".jsx", ".tsx", ".ios.js", ".android.js"]
+    }]
+  ]
+}

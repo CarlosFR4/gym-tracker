@@ -15,6 +15,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  input: {
+    fontSize: 20,
+    width: 'auto',
+    padding: 10,
+    margin: 10,
   }
 })
 
