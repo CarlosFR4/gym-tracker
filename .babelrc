@@ -4,9 +4,14 @@
     ["module-resolver", {
       "root": ["./"],
       "alias": {
-        "@components": "./src/components"
+        "@components": "./src/components",
+        "@di": "./di",
+        "@drizzle": "./drizzle"
       },
       "extensions": [".js", ".jsx", ".tsx", ".ios.js", ".android.js"]
+    }],
+    ["inline-import", {
+      "extensions": [".sql"]
     }]
   ]
 }

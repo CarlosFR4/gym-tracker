@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1713592150145,
+      "tag": "0000_jazzy_karma",
+      "breakpoints": true
+    }
+  ]
+}
