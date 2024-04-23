@@ -6,7 +6,8 @@
       "alias": {
         "@components": "./src/components",
         "@di": "./di",
-        "@drizzle": "./drizzle"
+        "@drizzle": "./drizzle",
+        "@locales": "./locales"
       },
       "extensions": [".js", ".jsx", ".tsx", ".ios.js", ".android.js"]
     }],
