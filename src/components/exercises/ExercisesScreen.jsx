@@ -7,6 +7,7 @@ import useGetAllExercises from '@hooks/useGetAllExercises'
 import Exercise from '@exercises/Exercise'
 import LoadingView from '@components/common/LoadingView'
 import ErrorView from '@components/common/ErrorView'
+import {exerciseForList} from '@exercises/mappers'
 
 /**
  * @typedef Props
@@ -52,10 +53,12 @@ const Screen = (data, loading, error) => {
   } else if (error) {
     return <ErrorView/>
   } else {
-    console.log(data)
-    const exercises = data.map(({name, image, bodyPart}) => {
-      return new Exercise(name, image, bodyPart)
-    }).concat(new Exercise('Jumping Jacks', null, 1))
+    const exercises = data.concat({
+      id: 1,
+      name: 'Test Exercise',
+      image: 'https://via.placeholder.com/150',
+      bodyPart: 8,
+    }).map(exerciseForList)
     return <FlatList data={exercises} renderItem={({item}) => <ExerciseCard exercise={item}/>}/>
   }
 }

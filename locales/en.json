@@ -1,4 +1,14 @@
 {
   "exercises": "Exercises",
-  "name": "Name"
+  "name": "Name",
+  "None": "None",
+  "Core": "Core",
+  "Arms": "Arms",
+  "Chest": "Chest",
+  "Legs": "Legs",
+  "Shoulders": "Shoulders",
+  "Other": "Other",
+  "Olympic": "Olympic",
+  "FullBody": "Full Body",
+  "Cardio": "Cardio"
 }

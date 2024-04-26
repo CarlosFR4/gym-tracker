@@ -1,4 +1,14 @@
 {
   "exercises": "Ejercicios",
-  "name": "Nombre"
+  "name": "Nombre",
+  "None": "Ninguna",
+  "Core": "Core",
+  "Arms": "Brazo",
+  "Chest": "Pecho",
+  "Legs": "Pierna",
+  "Shoulders": "Hombro",
+  "Other": "Otro",
+  "Olympic": "Olimpio",
+  "FullBody": "Cuerpo completo",
+  "Cardio": "Cardio"
 }
