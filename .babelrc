@@ -5,9 +5,13 @@
       "root": ["./"],
       "alias": {
         "@components": "./src/components",
-        "@di": "./di",
+        "@di": "./src/di",
         "@drizzle": "./drizzle",
-        "@locales": "./locales"
+        "@locales": "./locales",
+        "@assets": "./assets",
+        "@hooks": "./src/hooks",
+        "@exercises": "./src/exercises",
+        "@database": "./src/database"
       },
       "extensions": [".js", ".jsx", ".tsx", ".ios.js", ".android.js"]
     }],
