@@ -37,4 +37,7 @@ yarn-error.*
 # Idea IDE's
 .idea/
 
+# Test results
+coverage/
+
 webpack.webstorm.js

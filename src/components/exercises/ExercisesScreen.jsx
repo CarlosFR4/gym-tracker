@@ -3,11 +3,9 @@ import {Text, SafeAreaView, Pressable, FlatList, Image, View} from 'react-native
 import {Stack} from 'expo-router'
 import styles from './exercises.style'
 import defaultExerciseImage from '@assets/images/exercise-person.png'
-import useGetAllExercises from '@hooks/useGetAllExercises'
-import Exercise from '@exercises/Exercise'
 import LoadingView from '@components/common/LoadingView'
 import ErrorView from '@components/common/ErrorView'
-import {exerciseForList} from '@exercises/mappers'
+import {useGetAllExercises, exerciseForList} from '@di/component.module'
 
 /**
  * @typedef Props
@@ -56,7 +54,7 @@ const Screen = (data, loading, error) => {
     const exercises = data.concat({
       id: 1,
       name: 'Test Exercise',
-      image: 'https://via.placeholder.com/150',
+      image: defaultExerciseImage,
       bodyPart: 8,
     }).map(exerciseForList)
     return <FlatList data={exercises} renderItem={({item}) => <ExerciseCard exercise={item}/>}/>

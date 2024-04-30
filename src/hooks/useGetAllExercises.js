@@ -1,7 +1,11 @@
 import {useEffect, useState} from 'react'
-import {exercisesDao} from '@di/app.module'
 
-const useGetAllExercises = () => {
+/**
+ * Hook to retrieve all exercises.
+ * @param {ExercisesDao} exercisesDao
+ * @returns {{exercises: *[], loading: boolean, error: unknown}}
+ */
+export const useGetAllExercises = (exercisesDao) => {
   const [exercises, setExercises] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -10,7 +14,6 @@ const useGetAllExercises = () => {
     (async () => {
       try {
         const data = await exercisesDao.getAllExercises()
-        console.log('useGetAllExercises', data)
         setExercises(data)
       } catch (error) {
         setError(error)
@@ -18,9 +21,7 @@ const useGetAllExercises = () => {
         setLoading(false)
       }
     })()
-  }, [])
+  }, [exercisesDao])
 
   return {exercises, loading, error}
 }
-
-export default useGetAllExercises
