@@ -1,3 +1,3 @@
-import ExercisesScreen from '@components/exercises/ExercisesScreen'
+import {ExercisesScreen} from '@di/component.module'
 
 export default ExercisesScreen

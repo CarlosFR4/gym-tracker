@@ -1,4 +1,4 @@
-import exercises from '@exercises/exercises'
+import ExerciseSchema from '@database/ExerciseSchema'
 
 /**
  * Data Access Object for exercises.
@@ -18,28 +18,28 @@ class ExercisesDao {
 
   /**
    * Retrieve all exercises
-   * @returns {Promise<exercises[]>}
+   * @returns {Promise<ExerciseSchema[]>}
    */
   async getAllExercises() {
-    return await this.db.select().from(exercises)
+    return await this.db.select().from(ExerciseSchema)
   }
 
   /**
    * Retrieve an exercise by its id
    * @param {number} id
-   * @returns {Promise<exercises>}
+   * @returns {Promise<ExerciseSchema>}
    */
   async getExerciseById(id) {
-    return await this.db.select().from(exercises).where({id}).get()
+    return await this.db.select().from(ExerciseSchema).where({id}).get()
   }
 
   /**
    * Save an exercise
-   * @param {exercises} exercise
-   * @returns {Promise<exercises>}
+   * @param {ExerciseSchema} exercise
+   * @returns {Promise<ExerciseSchema>}
    */
   async save(exercise){
-    await this.db.insert(exercises).values(exercise)
+    await this.db.insert(ExerciseSchema).values(exercise)
   }
 }
 

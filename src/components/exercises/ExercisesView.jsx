@@ -1,14 +1,30 @@
 import React from 'react'
-import {Text, SafeAreaView, Pressable, FlatList, Image, View} from 'react-native'
+import {Text, Pressable, FlatList, Image, View} from 'react-native'
+import {SafeAreaView} from 'react-native-safe-area-context'
 import {Stack} from 'expo-router'
 import styles from './exercises.style'
 import defaultExerciseImage from '@assets/images/exercise-person.png'
-import LoadingView from '@components/common/LoadingView'
-import ErrorView from '@components/common/ErrorView'
-import {useGetAllExercises, exerciseForList} from '@di/component.module'
+
+export default function ExercisesView({useGetAllExercises, LoadingView, ErrorView, exerciseSchemaToExerciseItem}) {
+  const {exercises, loading, error} = useGetAllExercises()
+
+  return <>
+    <Stack.Screen
+      options={{
+        title: 'Exercises'
+      }}
+    />
+    <SafeAreaView style={styles.container}>
+      <View style={styles.view}>
+        <Screen data={exercises} loading={loading} error={error} LoadingView={LoadingView} ErrorView={ErrorView}
+                exerciseSchemaToExerciseItem={exerciseSchemaToExerciseItem}/>
+      </View>
+    </SafeAreaView>
+  </>
+}
 
 /**
- * @typedef Props
+ * @typedef ExercisesViewProps
  * @property {Object} exercise - The exercise to be displayed.
  * @property {string} exercise.image - The URL of the image for the exercise. If not provided, a default image is used.
  * @property {string} exercise.name - The name of the exercise.
@@ -18,7 +34,7 @@ import {useGetAllExercises, exerciseForList} from '@di/component.module'
 /**
  * @function
  * @name ExerciseCard
- * @param {Props} props - The properties for the ExerciseItem component.
+ * @param {ExercisesViewProps} props - The properties for the ExerciseItem component.
  * @returns {Element} A React component representing a single exercise.
  */
 const ExerciseCard = ({exercise}) => {
@@ -39,13 +55,20 @@ const ExerciseCard = ({exercise}) => {
 }
 
 /**
+ * @typedef ScreenProps
+ * @property {ExerciseSchema[]} data
+ * @property {Boolean} loading
+ * @property {Error|null} error
+ * @property {Element} LoadingView
+ * @property {Element} ErrorView
+ * @property {function} exerciseSchemaToExerciseItem
+ */
+/**
  * @function
- * @param {ExerciseTable[]} data
- * @param loading
- * @param error
+ * @param {ScreenProps} props
  * @returns {Element}
  */
-const Screen = (data, loading, error) => {
+const Screen = ({data, loading, error, LoadingView, ErrorView, exerciseSchemaToExerciseItem}) => {
   if (loading && !data && !error) {
     return <LoadingView/>
   } else if (error) {
@@ -56,24 +79,7 @@ const Screen = (data, loading, error) => {
       name: 'Test Exercise',
       image: defaultExerciseImage,
       bodyPart: 8,
-    }).map(exerciseForList)
+    }).map(exerciseSchemaToExerciseItem)
     return <FlatList data={exercises} renderItem={({item}) => <ExerciseCard exercise={item}/>}/>
   }
-}
-
-export default function ExercisesScreen() {
-  const {exercises, loading, error} = useGetAllExercises()
-
-  return <>
-    <Stack.Screen
-      options={{
-        title: 'Exercises'
-      }}
-    />
-    <SafeAreaView style={styles.container}>
-      <View style={styles.view}>
-        {Screen(exercises, loading, error)}
-      </View>
-    </SafeAreaView>
-  </>
 }

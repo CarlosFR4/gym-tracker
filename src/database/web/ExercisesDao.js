@@ -13,7 +13,7 @@ class ExercisesDao {
 
   /**
    * Retrieve all exercises
-   * @returns {Promise<exercises[]>}
+   * @returns {Promise<ExerciseSchema[]>}
    */
   async getAllExercises() {
     return new Promise((resolve) => {
@@ -24,7 +24,7 @@ class ExercisesDao {
   /**
    * Retrieve an exercise by its id
    * @param {number} id
-   * @returns {Promise<exercises>}
+   * @returns {Promise<ExerciseSchema>}
    */
   async getExerciseById(id) {
     return new Promise((resolve) => {
@@ -34,8 +34,7 @@ class ExercisesDao {
 
   /**
    * Save an exercise
-   * @param {exercises} exercise
-   * @returns {Promise<exercises>}
+   * @param {ExerciseSchema} exercise
    */
   async save(exercise) {
     new Promise((resolve) => {
