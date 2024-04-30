@@ -14,6 +14,10 @@ describe('useGetAllExercises', () => {
       image: 'image.jpg',
       bodyPart: 2,
     }]
+
+    /**
+     * @type {ExercisesDao}
+     */
     const mockExercisesDao = {
       getAllExercises: jest.fn().mockResolvedValue(mockExercises),
     }
@@ -35,6 +39,9 @@ describe('useGetAllExercises', () => {
 
   it('should handle error', async () => {
     const mockError = new Error('An error occurred')
+    /**
+     * @type {ExercisesDao}
+     */
     const mockExercisesDao = {
       getAllExercises: jest.fn().mockRejectedValue(mockError),
     }
