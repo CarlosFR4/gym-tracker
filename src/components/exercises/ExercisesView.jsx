@@ -5,6 +5,17 @@ import {Stack} from 'expo-router'
 import styles from './exercises.style'
 import defaultExerciseImage from '@assets/images/exercise-person.png'
 
+/**
+ * A React component that displays a list of exercises.
+ *
+ * @component
+ * @param {Object} props - The properties for the ExercisesView component.
+ * @param {function} props.useGetAllExercises - A hook function that retrieves all exercises.
+ * @param {Element} props.LoadingView - A React component to be displayed while the exercises are loading.
+ * @param {Element} props.ErrorView - A React component to be displayed if there is an error while loading the exercises.
+ * @param {function} props.exerciseSchemaToExerciseItem - A function that transforms an exercise schema object into an exercise item.
+ * @returns {Element} A React component that displays a list of exercises.
+ */
 export default function ExercisesView({useGetAllExercises, LoadingView, ErrorView, exerciseSchemaToExerciseItem}) {
   const {exercises, loading, error} = useGetAllExercises()
 
@@ -32,12 +43,13 @@ export default function ExercisesView({useGetAllExercises, LoadingView, ErrorVie
  */
 
 /**
- * @function
+ * @component
  * @name ExerciseCard
  * @param {ExercisesViewProps} props - The properties for the ExerciseItem component.
  * @returns {Element} A React component representing a single exercise.
  */
 const ExerciseCard = ({exercise}) => {
+  console.log(exercise)
   return <Pressable style={styles.card}>
     <View style={styles.exerciseIconContainer}>
       <Image
@@ -64,7 +76,7 @@ const ExerciseCard = ({exercise}) => {
  * @property {function} exerciseSchemaToExerciseItem
  */
 /**
- * @function
+ * @component
  * @param {ScreenProps} props
  * @returns {Element}
  */
@@ -74,12 +86,7 @@ const Screen = ({data, loading, error, LoadingView, ErrorView, exerciseSchemaToE
   } else if (error) {
     return <ErrorView/>
   } else {
-    const exercises = data.concat({
-      id: 1,
-      name: 'Test Exercise',
-      image: defaultExerciseImage,
-      bodyPart: 8,
-    }).map(exerciseSchemaToExerciseItem)
-    return <FlatList data={exercises} renderItem={({item}) => <ExerciseCard exercise={item}/>}/>
+    return <FlatList data={data.map(exerciseSchemaToExerciseItem)}
+                     renderItem={({item}) => <ExerciseCard exercise={item}/>}/>
   }
 }
