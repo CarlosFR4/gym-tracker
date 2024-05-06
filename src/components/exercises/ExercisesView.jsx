@@ -1,9 +1,12 @@
-import React from 'react'
-import {Text, Pressable, FlatList, Image, View} from 'react-native'
+import React, {useState} from 'react'
+import {Text, Pressable, FlatList, Image, View, TextInput} from 'react-native'
 import {SafeAreaView} from 'react-native-safe-area-context'
 import {Stack} from 'expo-router'
 import styles from './exercises.style'
 import defaultExerciseImage from '@assets/images/exercise-person.png'
+import {i18n, Theme} from '@di/app.module'
+import {FontAwesome, FontAwesome6, EvilIcons} from '@expo/vector-icons'
+import {EMPTY_STRING} from 'src/util/constants'
 
 /**
  * A React component that displays a list of exercises.
@@ -15,24 +18,164 @@ import defaultExerciseImage from '@assets/images/exercise-person.png'
  * @param {Element} props.ErrorView - A React component to be displayed if there is an error while loading the exercises.
  * @param {function} props.exerciseSchemaToExerciseItem - A function that transforms an exercise schema object into an exercise item.
  * @returns {Element} A React component that displays a list of exercises.
+ * @returns {Element} A React component that displays a list of exercises.
  */
 export default function ExercisesView({useGetAllExercises, LoadingView, ErrorView, exerciseSchemaToExerciseItem}) {
   const {exercises, loading, error} = useGetAllExercises()
+  const [searchTerm, setSearchTerm] = useState(EMPTY_STRING)
+
+  const testExercises = [
+    {
+      id: 1,
+      name: 'Bench Press',
+      bodyPart: 1,
+      image: null,
+      category: 1,
+    },
+    {
+      id: 2,
+      name: 'Squats',
+      bodyPart: 2,
+      image: null,
+      category: 2,
+    },
+    {
+      id: 3,
+      name: 'Deadlift',
+      bodyPart: 3,
+      image: null,
+      category: 3,
+    },
+    {
+      id: 4,
+      name: 'Pull Ups',
+      bodyPart: 4,
+      image: null,
+      category: 4,
+    },
+    {
+      id: 5,
+      name: 'Shoulder Press',
+      bodyPart: 5,
+      image: null,
+      category: 5,
+    },
+    {
+      id: 1,
+      name: 'Bench Press',
+      bodyPart: 1,
+      image: null,
+      category: 1,
+    },
+    {
+      id: 2,
+      name: 'Squats',
+      bodyPart: 2,
+      image: null,
+      category: 2,
+    },
+    {
+      id: 3,
+      name: 'Deadlift',
+      bodyPart: 3,
+      image: null,
+      category: 3,
+    },
+    {
+      id: 4,
+      name: 'Pull Ups',
+      bodyPart: 4,
+      image: null,
+      category: 4,
+    },
+    {
+      id: 5,
+      name: 'Shoulder Press',
+      bodyPart: 5,
+      image: null,
+      category: 5,
+    },
+    {
+      id: 1,
+      name: 'Bench Press',
+      bodyPart: 1,
+      image: null,
+      category: 1,
+    },
+    {
+      id: 2,
+      name: 'Squats',
+      bodyPart: 2,
+      image: null,
+      category: 2,
+    },
+    {
+      id: 3,
+      name: 'Deadlift',
+      bodyPart: 3,
+      image: null,
+      category: 3,
+    },
+    {
+      id: 4,
+      name: 'Pull Ups',
+      bodyPart: 4,
+      image: null,
+      category: 4,
+    },
+    {
+      id: 5,
+      name: 'Shoulder Press',
+      bodyPart: 5,
+      image: null,
+      category: 5,
+    },
+  ].map(exerciseSchemaToExerciseItem)
+
+  const filteredExercises = searchTerm === EMPTY_STRING ? testExercises :
+    testExercises.filter(exercise =>
+      exercise.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      exercise.bodyPart.toLowerCase().includes(searchTerm.toLowerCase())
+    )
 
   return <>
-    <Stack.Screen
-      options={{
-        title: 'Exercises'
-      }}
-    />
+    <Stack.Screen options={{headerShown: false}}/>
     <SafeAreaView style={styles.container}>
+      <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
       <View style={styles.view}>
-        <Screen data={exercises} loading={loading} error={error} LoadingView={LoadingView} ErrorView={ErrorView}
-                exerciseSchemaToExerciseItem={exerciseSchemaToExerciseItem}/>
+        <ExercisesList data={filteredExercises}
+                       loading={loading}
+                       error={error}
+                       LoadingView={LoadingView}
+                       ErrorView={ErrorView}/>
       </View>
     </SafeAreaView>
   </>
 }
+
+const Header = ({searchTerm, setSearchTerm}) => <View style={styles.header}>
+  <View style={styles.headerButtons}>
+    <View style={styles.searchBar}>
+      <FontAwesome style={styles.searchIcon} name="search" size={24} color={Theme.onPrimary}/>
+      <TextInput style={styles.searchInput}
+                 value={searchTerm}
+                 placeholderTextColor={Theme.onSecondary}
+                 placeholder={i18n.t('exercise')}
+                 onChangeText={text => setSearchTerm(text)}/>
+      {searchTerm !== EMPTY_STRING && (
+        <Pressable onPress={() => setSearchTerm(EMPTY_STRING)}>
+          <EvilIcons style={styles.clearSearchIcon} name="close" size={24} color={Theme.onPrimary}/>
+        </Pressable>
+      )}
+    </View>
+    <Pressable style={({pressed}) => styles.headerButton(pressed)}>
+      <FontAwesome name="filter" size={24} color={Theme.onPrimary}/>
+    </Pressable>
+    <Pressable style={({pressed}) => styles.headerButton(pressed)}>
+      <FontAwesome6 name="add" size={24} color={Theme.onPrimary}/>
+    </Pressable>
+  </View>
+</View>
 
 /**
  * @typedef ExercisesViewProps
@@ -41,7 +184,6 @@ export default function ExercisesView({useGetAllExercises, LoadingView, ErrorVie
  * @property {string} exercise.name - The name of the exercise.
  * @property {string} exercise.bodyPart - The body part that the exercise targets.
  */
-
 /**
  * @component
  * @name ExerciseCard
@@ -49,25 +191,23 @@ export default function ExercisesView({useGetAllExercises, LoadingView, ErrorVie
  * @returns {Element} A React component representing a single exercise.
  */
 const ExerciseCard = ({exercise}) => {
-  console.log(exercise)
-  return <Pressable style={styles.card}>
+  return <Pressable style={({pressed}) => styles.card(pressed)}>
     <View style={styles.exerciseIconContainer}>
       <Image
         style={styles.exerciseIcon}
-        resizeMode="contain"
         source={
           exercise.image ? {uri: exercise.image} : defaultExerciseImage
         }/>
     </View>
     <View style={styles.exerciseData}>
-      <Text>{exercise.name}</Text>
-      <Text>{exercise.bodyPart}</Text>
+      <Text style={styles.exerciseName}>{exercise.name}</Text>
+      <Text style={styles.exerciseBodyPart}>{exercise.bodyPart}</Text>
     </View>
   </Pressable>
 }
 
 /**
- * @typedef ScreenProps
+ * @typedef ExercisesListProps
  * @property {ExerciseSchema[]} data
  * @property {Boolean} loading
  * @property {Error|null} error
@@ -77,16 +217,15 @@ const ExerciseCard = ({exercise}) => {
  */
 /**
  * @component
- * @param {ScreenProps} props
+ * @param {ExercisesListProps} props
  * @returns {Element}
  */
-const Screen = ({data, loading, error, LoadingView, ErrorView, exerciseSchemaToExerciseItem}) => {
+const ExercisesList = ({data, loading, error, LoadingView, ErrorView}) => {
   if (loading && !data && !error) {
     return <LoadingView/>
   } else if (error) {
     return <ErrorView/>
   } else {
-    return <FlatList data={data.map(exerciseSchemaToExerciseItem)}
-                     renderItem={({item}) => <ExerciseCard exercise={item}/>}/>
+    return <FlatList data={data} renderItem={({item}) => <ExerciseCard exercise={item}/>}/>
   }
 }

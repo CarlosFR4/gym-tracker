@@ -18,6 +18,5 @@ const ExercisesScreen = () => <ExercisesView
 />
 
 export {
-  ExercisesScreen,
-  i18n,
+  ExercisesScreen
 }

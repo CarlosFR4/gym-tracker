@@ -1,14 +1,14 @@
 const BodyParts = Object.freeze({
-  None: 0,
-  Core: 1,
-  Arms: 2,
-  Chest: 3,
-  Legs: 4,
-  Shoulders: 5,
-  Other: 6,
-  Olympic: 7,
-  FullBody: 8,
-  Cardio: 9,
+  None: {name: 'none', value: 0},
+  Core: {name: 'core', value: 1},
+  Arms: {name: 'arms', value: 2},
+  Chest: {name: 'chest', value: 3},
+  Legs: {name: 'legs', value: 4},
+  Shoulders: {name: 'shoulders', value: 5},
+  Other: {name: 'other', value: 6},
+  Olympic: {name: 'olympic', value: 7},
+  FullBody: {name: 'fullBody', value: 8},
+  Cardio: {name: 'cardio', value: 9},
 })
 
 export default BodyParts

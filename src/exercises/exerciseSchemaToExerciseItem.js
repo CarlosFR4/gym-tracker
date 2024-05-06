@@ -17,6 +17,6 @@ import Exercise from '@exercises/Exercise'
  * @returns {ExerciseItem}
  */
 export default function exerciseSchemaToExerciseItem({name, image, bodyPart}, i18n) {
-  const bodyPartName = Object.entries(BodyParts).find(([, value]) => value === bodyPart)[0]
+  const bodyPartName = Object.entries(BodyParts).find(([, entry]) => entry.value === bodyPart)[1].name
   return new Exercise(name, image, i18n.t(bodyPartName))
 }

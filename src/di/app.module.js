@@ -5,6 +5,10 @@ import migrations from '@drizzle/migrations'
 import {Platform} from 'react-native'
 import MobileDatabase from '@database/mobile/MobileDatabase'
 import WebDatabase from '@database/web/WebDatabase'
+import {Appearance} from 'react-native'
+import DarkTheme from '@theme/DarkTheme'
+import LightTheme from '@theme/LightTheme'
+import Sizes from '@theme/Sizes'
 
 const db = (() => {
   if (Platform.OS === 'ios' || Platform.OS === 'android') {
@@ -18,7 +22,12 @@ const db = (() => {
 
 const exercisesDao = db.exercisesDao()
 
+const colorScheme = Appearance.getColorScheme()
+const Theme = colorScheme === 'dark' ? DarkTheme : LightTheme
+
 export {
   exercisesDao,
   i18n,
+  Theme,
+  Sizes,
 }

@@ -1,14 +1,15 @@
 {
+  "exercise": "Ejercicio",
   "exercises": "Ejercicios",
   "name": "Nombre",
-  "None": "Ninguna",
-  "Core": "Core",
-  "Arms": "Brazo",
-  "Chest": "Pecho",
-  "Legs": "Pierna",
-  "Shoulders": "Hombro",
-  "Other": "Otro",
-  "Olympic": "Olimpio",
-  "FullBody": "Cuerpo completo",
-  "Cardio": "Cardio"
+  "none": "Ninguna",
+  "core": "Core",
+  "arms": "Brazo",
+  "chest": "Pecho",
+  "legs": "Pierna",
+  "shoulders": "Hombro",
+  "other": "Otro",
+  "olympic": "Olimpio",
+  "fullBody": "Cuerpo completo",
+  "cardio": "Cardio"
 }

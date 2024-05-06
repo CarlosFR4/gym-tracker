@@ -1,14 +1,15 @@
 {
+  "exercise": "Exercise",
   "exercises": "Exercises",
   "name": "Name",
-  "None": "None",
-  "Core": "Core",
-  "Arms": "Arms",
-  "Chest": "Chest",
-  "Legs": "Legs",
-  "Shoulders": "Shoulders",
-  "Other": "Other",
-  "Olympic": "Olympic",
-  "FullBody": "Full Body",
-  "Cardio": "Cardio"
+  "none": "None",
+  "core": "Core",
+  "arms": "Arms",
+  "chest": "Chest",
+  "legs": "Legs",
+  "shoulders": "Shoulders",
+  "other": "Other",
+  "olympic": "Olympic",
+  "fullBody": "Full Body",
+  "cardio": "Cardio"
 }

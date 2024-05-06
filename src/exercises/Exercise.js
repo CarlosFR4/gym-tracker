@@ -10,9 +10,9 @@ class Exercise {
    * @param {string} bodyPart - The body part that the exercise targets.
    */
   constructor(name, image, bodyPart) {
-    this.name = name;
-    this.image = image;
-    this.bodyPart = bodyPart;
+    this.name = name
+    this.image = image
+    this.bodyPart = bodyPart
   }
 }
 
