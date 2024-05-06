@@ -1,21 +1,31 @@
 import React from 'react'
 import {Tabs} from 'expo-router'
 import {FontAwesome5, FontAwesome6, Ionicons} from '@expo/vector-icons'
+import {Theme} from '@di/app.module'
+import Sizes from '@theme/Sizes'
 
 export default function TabLayout() {
   return (
     <Tabs screenOptions={{
-      tabBarActiveTintColor: ACTIVE_TAB_TINT_COLOR,
+      tabBarActiveBackgroundColor: Theme.surface,
+      tabBarInactiveTintColor: Theme.onBackground,
+      tabBarActiveTintColor: Theme.secondaryVariant,
+      tabBarItemStyle: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingBottom: Sizes.xSmall,
+        paddingTop: Sizes.xSmall,
+      },
       tabBarStyle: {
-        padding: 5,
-        height: 60
-      }
+        backgroundColor: Theme.background,
+        height: 60,
+        borderTopWidth: 0,
+      },
     }}>
       <Tabs.Screen name="index" options={{
         title: 'Profile',
-        tabBarIcon: ({color}) => <FontAwesome5 size={28} name="user" color={color} style={{
-          padding: 2
-        }}/>
+        tabBarIcon: ({color}) => <FontAwesome5 size={28} name="user" color={color}/>
       }}/>
       <Tabs.Screen name="history" options={{
         title: 'History',
@@ -36,5 +46,3 @@ export default function TabLayout() {
     </Tabs>
   )
 }
-
-const ACTIVE_TAB_TINT_COLOR = 'blue'

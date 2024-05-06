@@ -2,7 +2,7 @@ const LightTheme = {
   primary: '#35155d',
   primaryVariant: '#512b81',
   secondary: '#4477ce',
-  secondaryVariant: '#8cabff',
+  secondaryVariant: '#2157e0',
   background: '#f7fdfd',
   surface: '#dfe5e5',
   error: '#cc2d59',

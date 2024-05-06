@@ -8,7 +8,6 @@ import WebDatabase from '@database/web/WebDatabase'
 import {Appearance} from 'react-native'
 import DarkTheme from '@theme/DarkTheme'
 import LightTheme from '@theme/LightTheme'
-import Sizes from '@theme/Sizes'
 
 const db = (() => {
   if (Platform.OS === 'ios' || Platform.OS === 'android') {
@@ -24,10 +23,10 @@ const exercisesDao = db.exercisesDao()
 
 const colorScheme = Appearance.getColorScheme()
 const Theme = colorScheme === 'dark' ? DarkTheme : LightTheme
+console.log('colorScheme', colorScheme)
 
 export {
   exercisesDao,
   i18n,
   Theme,
-  Sizes,
 }

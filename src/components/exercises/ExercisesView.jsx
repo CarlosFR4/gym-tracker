@@ -1,12 +1,13 @@
 import React, {useState} from 'react'
 import {Text, Pressable, FlatList, Image, View, TextInput} from 'react-native'
 import {SafeAreaView} from 'react-native-safe-area-context'
-import {Stack} from 'expo-router'
+import {router, Stack} from 'expo-router'
 import styles from './exercises.style'
 import defaultExerciseImage from '@assets/images/exercise-person.png'
 import {i18n, Theme} from '@di/app.module'
 import {FontAwesome, FontAwesome6, EvilIcons} from '@expo/vector-icons'
 import {EMPTY_STRING} from 'src/util/constants'
+import {createExercise} from 'src/util/routes'
 
 /**
  * A React component that displays a list of exercises.
@@ -171,7 +172,7 @@ const Header = ({searchTerm, setSearchTerm}) => <View style={styles.header}>
     <Pressable style={({pressed}) => styles.headerButton(pressed)}>
       <FontAwesome name="filter" size={24} color={Theme.onPrimary}/>
     </Pressable>
-    <Pressable style={({pressed}) => styles.headerButton(pressed)}>
+    <Pressable style={({pressed}) => styles.headerButton(pressed)}  onPress={() => router.push(createExercise)}>
       <FontAwesome6 name="add" size={24} color={Theme.onPrimary}/>
     </Pressable>
   </View>
