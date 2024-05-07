@@ -1,4 +1,6 @@
 const Sizes = {
+  none: 0,
+  xxxSmall: 1,
   xxSmall: 2,
   xSmall: 5,
   small: 8,

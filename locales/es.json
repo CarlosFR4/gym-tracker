@@ -11,5 +11,18 @@
   "other": "Otro",
   "olympic": "Olimpio",
   "fullBody": "Cuerpo completo",
-  "cardio": "Cardio"
+  "cardio": "Cardio",
+  "createExercise": "Crear ejercicio",
+  "addName": "Añadir nombre",
+  "bodyPart": "Parte del cuerpo",
+  "category": "Categoría",
+  "barbell": "Barra",
+  "dumbbell": "Mancuerna",
+  "machine": "Máquina/Otro",
+  "bodyWeight": "Peso corporal",
+  "assistedBody": "Peso corporal asistido",
+  "cardioExercise": "Cardio",
+  "duration": "Duración",
+  "done": "Hecho",
+  "ok": "OK"
 }

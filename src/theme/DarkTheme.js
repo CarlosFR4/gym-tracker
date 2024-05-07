@@ -1,5 +1,5 @@
 const DarkTheme = {
-  primary: '#10439f',
+    primary: '#10439f',
   primaryVariant: '#874ccc',
   secondary: '#c65bcf',
   secondaryVariant: '#f27bbd',

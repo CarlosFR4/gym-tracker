@@ -141,7 +141,7 @@ export default function ExercisesView({useGetAllExercises, LoadingView, ErrorVie
 
   return <>
     <Stack.Screen options={{headerShown: false}}/>
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.screen}>
       <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
       <View style={styles.view}>
         <ExercisesList data={filteredExercises}

@@ -11,5 +11,19 @@
   "other": "Other",
   "olympic": "Olympic",
   "fullBody": "Full Body",
-  "cardio": "Cardio"
+  "cardio": "Cardio",
+  "createExercise": "Create Exercise",
+  "addName": "Add Name",
+  "bodyPart": "Body Part",
+  "category": "Category",
+  "barbell": "Barbell",
+  "dumbbell": "Dumbbell",
+  "machine": "Machine/Other",
+  "bodyWeight": "Weighted bodyweight",
+  "assistedBody": "Assisted body",
+  "repsOnly": "Reps only",
+  "cardioExercise": "Cardio exercise",
+  "duration": "Duration",
+  "done": "Done",
+  "ok": "OK"
 }

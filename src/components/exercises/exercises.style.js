@@ -3,14 +3,9 @@ import Sizes from '@theme/Sizes'
 import {Theme} from '@di/app.module'
 
 const styles = StyleSheet.create({
-  container: {
+  screen: {
     flex: 1,
-    width: '100%',
     backgroundColor: Theme.background,
-  },
-  text: {
-    fontSize: Sizes.large,
-    color: '#000',
   },
   view: {
     width: '100%',
@@ -29,7 +24,6 @@ const styles = StyleSheet.create({
     backgroundColor: pressed ? Theme.surface : Theme.background,
   }),
   header: {
-    backgroundColor: Theme.background,
     flexDirection: 'row',
     alignItems: 'center',
     height: 70,
@@ -41,7 +35,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     flex: 1,
   },
-  headerButton: (pressed) => ({
+  headerButton: pressed => ({
     padding: Sizes.medium,
     margin: Sizes.xSmall,
     borderRadius: 55,
