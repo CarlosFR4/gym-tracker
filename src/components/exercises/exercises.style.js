@@ -1,6 +1,8 @@
 import {StyleSheet} from 'react-native'
 import Sizes from '@theme/Sizes'
 import {Theme} from '@di/app.module'
+import FontWeight from '@theme/FontWeight'
+import {FlexDirection} from 'src/util/constants'
 
 const styles = StyleSheet.create({
   screen: {
@@ -11,26 +13,26 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   input: {
-    fontSize: 20,
+    fontSize: Sizes.xLarge,
     width: 'auto',
-    padding: 10,
-    margin: 10,
+    padding: Sizes.medium,
+    margin: Sizes.medium,
   },
   card: (pressed) => ({
-    flexDirection: 'row',
+    flexDirection: FlexDirection.Row,
     alignSelf: 'flex-start',
     width: '100%',
     padding: Sizes.small,
     backgroundColor: pressed ? Theme.surface : Theme.background,
   }),
   header: {
-    flexDirection: 'row',
+    flexDirection: FlexDirection.Row,
     alignItems: 'center',
     height: 70,
   },
   headerButtons: {
     margin: Sizes.xSmall,
-    flexDirection: 'row',
+    flexDirection: FlexDirection.Row,
     alignItems: 'center',
     justifyContent: 'flex-end',
     flex: 1,
@@ -46,7 +48,7 @@ const styles = StyleSheet.create({
     margin: Sizes.small,
     borderRadius: Sizes.xSmall,
     backgroundColor: Theme.surface,
-    flexDirection: 'row',
+    flexDirection: FlexDirection.Row,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -59,7 +61,7 @@ const styles = StyleSheet.create({
   searchInput: {
     flex: 1,
     color: Theme.onSurface,
-    fontWeight: '500',
+    fontWeight: FontWeight.w500,
     marginStart: Sizes.small,
     marginEnd: Sizes.small,
   },
@@ -80,12 +82,12 @@ const styles = StyleSheet.create({
   exerciseName: {
     fontSize: Sizes.xLarge,
     color: Theme.onPrimary,
-    fontWeight: '500',
+    fontWeight: FontWeight.w500,
     paddingBottom: 5,
   },
   exerciseBodyPart: {
     fontSize: Sizes.large,
-    fontWeight: '400',
+    fontWeight: FontWeight.w400,
     color: Theme.onSecondary,
   },
 })

@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native'
 import Sizes from '@theme/Sizes'
 import {Theme} from '@di/app.module'
+import {AlignItems, Auto, FlexDirection, JustifyContent} from 'src/util/constants'
 
 const styles = StyleSheet.create({
   screen: {
@@ -8,15 +9,15 @@ const styles = StyleSheet.create({
     backgroundColor: Theme.background,
   },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: FlexDirection.Row,
+    alignItems: AlignItems.Center,
     height: 70,
   },
   headerButtons: {
     margin: Sizes.xSmall,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
+    flexDirection: FlexDirection.Row,
+    alignItems: AlignItems.Center,
+    justifyContent: JustifyContent.FlexEnd,
     flex: 1,
   },
   closeButton: pressed => ({
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: Sizes.xxLarge,
     color: Theme.onBackground,
-    justifyContent: 'center',
+    justifyContent: JustifyContent.Center,
     margin: Sizes.medium,
   },
   doneButton: pressed => ({
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
     fontSize: Sizes.xLarge,
   },
   input: {
-    width: 'auto',
+    width: Auto,
     padding: Sizes.xLarge,
     marginTop: Sizes.medium,
     marginBottom: Sizes.medium,

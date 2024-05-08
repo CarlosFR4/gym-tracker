@@ -24,5 +24,9 @@
   "cardioExercise": "Cardio",
   "duration": "Duración",
   "done": "Hecho",
-  "ok": "OK"
+  "ok": "OK",
+  "nameRequired": "Nombre requerido",
+  "categoryRequired": "Categoría requerida",
+  "bodyPartRequired": "Parte del cuerpo requerida",
+  "unknownError": "Error desconocido"
 }

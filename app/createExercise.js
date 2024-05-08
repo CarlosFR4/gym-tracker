@@ -1,3 +1,3 @@
-import CreateExerciseView from '@components/exercises/CreateExerciseView'
+import {CreateExerciseScreen} from '@di/component.module'
 
-export default CreateExerciseView
+export default CreateExerciseScreen

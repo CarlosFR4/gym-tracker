@@ -6,7 +6,7 @@ import styles from './exercises.style'
 import defaultExerciseImage from '@assets/images/exercise-person.png'
 import {i18n, Theme} from '@di/app.module'
 import {FontAwesome, FontAwesome6, EvilIcons} from '@expo/vector-icons'
-import {EMPTY_STRING} from 'src/util/constants'
+import {EmptyString} from 'src/util/constants'
 import {createExercise} from 'src/util/routes'
 
 /**
@@ -23,7 +23,7 @@ import {createExercise} from 'src/util/routes'
  */
 export default function ExercisesView({useGetAllExercises, LoadingView, ErrorView, exerciseSchemaToExerciseItem}) {
   const {exercises, loading, error} = useGetAllExercises()
-  const [searchTerm, setSearchTerm] = useState(EMPTY_STRING)
+  const [searchTerm, setSearchTerm] = useState(EmptyString)
 
   const testExercises = [
     {
@@ -132,9 +132,10 @@ export default function ExercisesView({useGetAllExercises, LoadingView, ErrorVie
       category: 5,
     },
   ].map(exerciseSchemaToExerciseItem)
+  const exercisesToDisplay = exercises.map(exerciseSchemaToExerciseItem)
 
-  const filteredExercises = searchTerm === EMPTY_STRING ? testExercises :
-    testExercises.filter(exercise =>
+  const filteredExercises = searchTerm === EmptyString ? exercisesToDisplay :
+    exercisesToDisplay.filter(exercise =>
       exercise.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       exercise.bodyPart.toLowerCase().includes(searchTerm.toLowerCase())
     )
@@ -163,8 +164,8 @@ const Header = ({searchTerm, setSearchTerm}) => <View style={styles.header}>
                  placeholderTextColor={Theme.onSecondary}
                  placeholder={i18n.t('exercise')}
                  onChangeText={text => setSearchTerm(text)}/>
-      {searchTerm !== EMPTY_STRING && (
-        <Pressable onPress={() => setSearchTerm(EMPTY_STRING)}>
+      {searchTerm !== EmptyString && (
+        <Pressable onPress={() => setSearchTerm(EmptyString)}>
           <EvilIcons style={styles.clearSearchIcon} name="close" size={24} color={Theme.onPrimary}/>
         </Pressable>
       )}

@@ -1,14 +1,16 @@
+import React, {useState} from 'react'
 import {router, Stack} from 'expo-router'
 import {Pressable, Text, TextInput, View} from 'react-native'
 import {SafeAreaView} from 'react-native-safe-area-context'
 import styles from './createExercise.style'
-import React from 'react'
 import {FontAwesome} from '@expo/vector-icons'
 import {i18n, Theme} from '@di/app.module'
 import BodyParts from '@exercises/BodyParts'
 import {SelectModal} from '@components/common/SelectModal'
 import Categories from '@exercises/Categories'
-import {EMPTY_STRING} from 'src/util/constants'
+import {EmptyString} from 'src/util/constants'
+import SnackBar from '@components/common/SnackBar'
+import Strings from '@locales/Strings'
 
 const categories = Object.entries(Categories).map(([, category]) => ({
   label: i18n.t(category.name),
@@ -20,17 +22,43 @@ const bodyParts = Object.entries(BodyParts).map(([, bodyPart]) => ({
   value: bodyPart.value,
 }))
 
-const isValidData = (name, category, bodyPart) => name !== EMPTY_STRING && category && bodyPart
+const isValidData = (name, category, bodyPart) => name !== EmptyString && category && bodyPart
 
-const submit = (name, category, bodyPart) => {
-  if (!isValidData(name, category, bodyPart)) return
-  console.log(name, category.value, bodyPart.value)
-}
+/**
+ * A React component that displays a view for creating an exercise.
+ * @param {import('@hooks/useSaveExercise')} useSaveExercise
+ * @returns {JSX.Element}
+ * @constructor
+ */
+export default function CreateExerciseView({useSaveExercise}) {
+  const [name, setName] = useState(EmptyString)
+  const [category, setCategory] = useState(null)
+  const [bodyPart, setBodyPart] = useState(bodyParts[0])
 
-export default function CreateExerciseView() {
-  const [name, setName] = React.useState(EMPTY_STRING)
-  const [category, setCategory] = React.useState(null)
-  const [bodyPart, setBodyPart] = React.useState(bodyParts[0])
+  const [visibleSnackBar, setVisibleSnackBar] = useState(false)
+  const [snackBarMessage, setSnackBarMessage] = useState(EmptyString)
+
+  const saveExercise = useSaveExercise()
+
+  const submit = (name, category, bodyPart) => {
+    if (!isValidData(name, category, bodyPart)) {
+      showSnackBar()
+      return
+    }
+    saveExercise({name, category: category.value, bodyPart: bodyPart.value, image: null})
+    router.navigate('/exercises')
+  }
+
+  const showSnackBar = () => {
+    if (!name) {
+      setSnackBarMessage(i18n.t(Strings.nameRequired))
+    } else if (!category) {
+      setSnackBarMessage(i18n.t(Strings.categoryRequired))
+    } else {
+      setSnackBarMessage(i18n.t(Strings.unknownError))
+    }
+    setVisibleSnackBar(true)
+  }
 
   return <>
     <Stack.Screen options={{headerShown: false}}/>
@@ -39,23 +67,23 @@ export default function CreateExerciseView() {
         <Pressable style={({pressed}) => styles.closeButton(pressed)} onPress={() => router.back()}>
           <FontAwesome name="times" size={24} color={Theme.onPrimary}/>
         </Pressable>
-        <Text style={styles.headerTitle}>{i18n.t('createExercise')}</Text>
+        <Text style={styles.headerTitle}>{i18n.t(Strings.createExercise)}</Text>
         <Pressable style={({pressed}) => styles.doneButton(pressed)}
                    onPress={() => submit(name, category, bodyPart)}>
-          <Text style={styles.doneButtonText}>{i18n.t('done')}</Text>
+          <Text style={styles.doneButtonText}>{i18n.t(Strings.done)}</Text>
         </Pressable>
       </View>
 
       <TextInput style={styles.input}
-                 onChangeText={text => setName(text)}
-                 placeholder={i18n.t('addName')}
+                 placeholder={i18n.t(Strings.addName)}
                  placeholderTextColor={Theme.onSecondary}
+                 onChangeText={setName}
       />
 
       <SelectModal items={categories}
-                   label={i18n.t('category')}
-                   placeholder={i18n.t('none')}
-                   style={styles.select}
+                   label={i18n.t(Strings.category)}
+                   placeholder={i18n.t(Strings.none)}
+                   styleOnPress={styles.select}
                    labelStyle={styles.selectLabel}
                    selectedTextStyle={styles.selectValue}
                    modalStyle={styles.modal}
@@ -63,14 +91,22 @@ export default function CreateExerciseView() {
       />
 
       <SelectModal items={bodyParts}
-                   label={i18n.t('bodyPart')}
-                   placeholder={i18n.t('none')}
-                   style={styles.select}
+                   label={i18n.t(Strings.bodyPart)}
+                   placeholder={i18n.t(Strings.none)}
+                   styleOnPress={styles.select}
                    labelStyle={styles.selectLabel}
                    selectedTextStyle={styles.selectValue}
                    modalStyle={styles.modal}
                    defaultItem={bodyPart}
                    onChange={bodyPart => setBodyPart(bodyPart)}
+      />
+
+      <SnackBar
+        visible={visibleSnackBar}
+        message={snackBarMessage}
+        onHide={() => setVisibleSnackBar(false)}
+        backgroundColor={Theme.error}
+        textColor={Theme.onError}
       />
     </SafeAreaView>
   </>

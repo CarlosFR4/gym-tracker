@@ -8,6 +8,7 @@ import Sizes from '@theme/Sizes'
 export const SelectModal = ({
                               items,
                               style,
+                              styleOnPress,
                               label,
                               placeholder,
                               labelStyle,
@@ -20,7 +21,8 @@ export const SelectModal = ({
   const [pressedItem, setPressedItem] = useState(defaultItem)
 
   return <>
-    <Pressable style={({pressed}) => [selectStyle.select, style(pressed)]} onPress={() => setShowOptions(!showOptions)}>
+    <Pressable style={({pressed}) => [selectStyle.select, style, styleOnPress(pressed),]}
+               onPress={() => setShowOptions(!showOptions)}>
       <Text style={labelStyle}>{label}</Text>
       <Text style={selectedTextStyle}>{selectedItem ? selectedItem.label : placeholder}</Text>
     </Pressable>
