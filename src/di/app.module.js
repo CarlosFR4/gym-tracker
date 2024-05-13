@@ -8,6 +8,9 @@ import WebDatabase from '@database/web/WebDatabase'
 import {Appearance} from 'react-native'
 import DarkTheme from '@theme/DarkTheme'
 import LightTheme from '@theme/LightTheme'
+import {getAllExercisesUseCase as getAllExercises} from '@usecases/exercises/getAllExercisesUseCase'
+import {saveExerciseUseCase as saveExercise} from '@usecases/exercises/saveExerciseUseCase'
+import {ExercisesProvider as ExercisesProviderComponent, useExercises} from '@contexts/ExerciseContext'
 
 const db = (() => {
   if (Platform.OS === 'ios' || Platform.OS === 'android') {
@@ -21,11 +24,19 @@ const db = (() => {
 
 const exercisesDao = db.exercisesDao()
 
+const getAllExercisesUseCase = () => getAllExercises(exercisesDao)
+
+const saveExerciseUseCase = exercise => saveExercise(exercisesDao, exercise)
+
+const ExercisesProvider = ({children}) => ExercisesProviderComponent({getAllExercisesUseCase, saveExerciseUseCase, children})
+
 const colorScheme = Appearance.getColorScheme()
 const Theme = colorScheme === 'dark' ? DarkTheme : LightTheme
 console.log('colorScheme', colorScheme)
 
 export {
+  ExercisesProvider,
+  useExercises,
   exercisesDao,
   i18n,
   Theme,

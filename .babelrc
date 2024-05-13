@@ -9,10 +9,12 @@
         "@drizzle": "./drizzle",
         "@locales": "./locales",
         "@assets": "./assets",
+        "@usecases": "./src/usecases",
         "@hooks": "./src/hooks",
         "@exercises": "./src/exercises",
         "@database": "./src/database",
-        "@theme": "./src/theme"
+        "@theme": "./src/theme",
+        "@contexts": "./src/contexts"
       },
       "extensions": [".js", ".jsx", ".tsx", ".ios.js", ".android.js"]
     }],

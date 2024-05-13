@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
   },
   view: {
     width: '100%',
+    maxHeight: '90%',
   },
   input: {
     fontSize: Sizes.xLarge,

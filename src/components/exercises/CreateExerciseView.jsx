@@ -4,9 +4,9 @@ import {Pressable, Text, TextInput, View} from 'react-native'
 import {SafeAreaView} from 'react-native-safe-area-context'
 import styles from './createExercise.style'
 import {FontAwesome} from '@expo/vector-icons'
-import {i18n, Theme} from '@di/app.module'
+import {i18n, Theme, useExercises} from '@di/app.module'
 import BodyParts from '@exercises/BodyParts'
-import {SelectModal} from '@components/common/SelectModal'
+import SelectModal from '@components/common/SelectModal'
 import Categories from '@exercises/Categories'
 import {EmptyString} from 'src/util/constants'
 import SnackBar from '@components/common/SnackBar'
@@ -26,11 +26,10 @@ const isValidData = (name, category, bodyPart) => name !== EmptyString && catego
 
 /**
  * A React component that displays a view for creating an exercise.
- * @param {import('@hooks/useSaveExercise')} useSaveExercise
  * @returns {JSX.Element}
  * @constructor
  */
-export default function CreateExerciseView({useSaveExercise}) {
+export default function CreateExerciseView() {
   const [name, setName] = useState(EmptyString)
   const [category, setCategory] = useState(null)
   const [bodyPart, setBodyPart] = useState(bodyParts[0])
@@ -38,15 +37,17 @@ export default function CreateExerciseView({useSaveExercise}) {
   const [visibleSnackBar, setVisibleSnackBar] = useState(false)
   const [snackBarMessage, setSnackBarMessage] = useState(EmptyString)
 
-  const saveExercise = useSaveExercise()
+  const {addExercise} = useExercises()
 
   const submit = (name, category, bodyPart) => {
     if (!isValidData(name, category, bodyPart)) {
       showSnackBar()
       return
     }
-    saveExercise({name, category: category.value, bodyPart: bodyPart.value, image: null})
-    router.navigate('/exercises')
+
+    addExercise({name, category: category.value, bodyPart: bodyPart.value, image: null})
+      .then(() => router.navigate('/exercises'))
+      .catch(err => console.log('error saving', err))
   }
 
   const showSnackBar = () => {

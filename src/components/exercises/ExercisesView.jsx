@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Text, Pressable, FlatList, Image, View, TextInput} from 'react-native'
 import {SafeAreaView} from 'react-native-safe-area-context'
-import {router, Stack} from 'expo-router'
+import {router, Stack, useFocusEffect} from 'expo-router'
 import styles from './exercises.style'
 import defaultExerciseImage from '@assets/images/exercise-person.png'
-import {i18n, Theme} from '@di/app.module'
+import {i18n, Theme, useExercises} from '@di/app.module'
 import {FontAwesome, FontAwesome6, EvilIcons} from '@expo/vector-icons'
 import {EmptyString} from 'src/util/constants'
 import {createExercise} from 'src/util/routes'
@@ -14,124 +14,29 @@ import {createExercise} from 'src/util/routes'
  *
  * @component
  * @param {Object} props - The properties for the ExercisesView component.
- * @param {function} props.useGetAllExercises - A hook function that retrieves all exercises.
- * @param {Element} props.LoadingView - A React component to be displayed while the exercises are loading.
  * @param {Element} props.ErrorView - A React component to be displayed if there is an error while loading the exercises.
  * @param {function} props.exerciseSchemaToExerciseItem - A function that transforms an exercise schema object into an exercise item.
  * @returns {Element} A React component that displays a list of exercises.
+ *
  * @returns {Element} A React component that displays a list of exercises.
  */
-export default function ExercisesView({useGetAllExercises, LoadingView, ErrorView, exerciseSchemaToExerciseItem}) {
-  const {exercises, loading, error} = useGetAllExercises()
+export default function ExercisesView({ErrorView, exerciseSchemaToExerciseItem}) {
+  const [exercises, setExercises] = useState([])
+  const [error, setError] = useState(null)
   const [searchTerm, setSearchTerm] = useState(EmptyString)
+  const {getExercises} = useExercises()
 
-  const testExercises = [
-    {
-      id: 1,
-      name: 'Bench Press',
-      bodyPart: 1,
-      image: null,
-      category: 1,
-    },
-    {
-      id: 2,
-      name: 'Squats',
-      bodyPart: 2,
-      image: null,
-      category: 2,
-    },
-    {
-      id: 3,
-      name: 'Deadlift',
-      bodyPart: 3,
-      image: null,
-      category: 3,
-    },
-    {
-      id: 4,
-      name: 'Pull Ups',
-      bodyPart: 4,
-      image: null,
-      category: 4,
-    },
-    {
-      id: 5,
-      name: 'Shoulder Press',
-      bodyPart: 5,
-      image: null,
-      category: 5,
-    },
-    {
-      id: 1,
-      name: 'Bench Press',
-      bodyPart: 1,
-      image: null,
-      category: 1,
-    },
-    {
-      id: 2,
-      name: 'Squats',
-      bodyPart: 2,
-      image: null,
-      category: 2,
-    },
-    {
-      id: 3,
-      name: 'Deadlift',
-      bodyPart: 3,
-      image: null,
-      category: 3,
-    },
-    {
-      id: 4,
-      name: 'Pull Ups',
-      bodyPart: 4,
-      image: null,
-      category: 4,
-    },
-    {
-      id: 5,
-      name: 'Shoulder Press',
-      bodyPart: 5,
-      image: null,
-      category: 5,
-    },
-    {
-      id: 1,
-      name: 'Bench Press',
-      bodyPart: 1,
-      image: null,
-      category: 1,
-    },
-    {
-      id: 2,
-      name: 'Squats',
-      bodyPart: 2,
-      image: null,
-      category: 2,
-    },
-    {
-      id: 3,
-      name: 'Deadlift',
-      bodyPart: 3,
-      image: null,
-      category: 3,
-    },
-    {
-      id: 4,
-      name: 'Pull Ups',
-      bodyPart: 4,
-      image: null,
-      category: 4,
-    },
-    {
-      id: 5,
-      name: 'Shoulder Press',
-      bodyPart: 5,
-      image: null,
-      category: 5,
-    },
-  ].map(exerciseSchemaToExerciseItem)
+  useFocusEffect(() => {
+    (async () => {
+      try {
+        const data = await getExercises()
+        setExercises(data)
+      } catch (error) {
+        setError(error)
+      }
+    })()
+  })
+
   const exercisesToDisplay = exercises.map(exerciseSchemaToExerciseItem)
 
   const filteredExercises = searchTerm === EmptyString ? exercisesToDisplay :
@@ -146,9 +51,7 @@ export default function ExercisesView({useGetAllExercises, LoadingView, ErrorVie
       <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
       <View style={styles.view}>
         <ExercisesList data={filteredExercises}
-                       loading={loading}
                        error={error}
-                       LoadingView={LoadingView}
                        ErrorView={ErrorView}/>
       </View>
     </SafeAreaView>
@@ -222,10 +125,8 @@ const ExerciseCard = ({exercise}) => {
  * @param {ExercisesListProps} props
  * @returns {Element}
  */
-const ExercisesList = ({data, loading, error, LoadingView, ErrorView}) => {
-  if (loading && !data && !error) {
-    return <LoadingView/>
-  } else if (error) {
+const ExercisesList = ({data, error, ErrorView}) => {
+  if (error) {
     return <ErrorView/>
   } else {
     return <FlatList data={data} renderItem={({item}) => <ExerciseCard exercise={item}/>}/>

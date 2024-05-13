@@ -1,7 +1,7 @@
 /** @type { import("drizzle-kit").Config } */
 export default {
   schema: [
-    './src/exercisesTable/exercises.js',
+    './src/database/ExerciseSchema.js',
   ],
   driver: 'expo',
   out: './drizzle'

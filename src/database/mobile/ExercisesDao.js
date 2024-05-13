@@ -39,7 +39,8 @@ class ExercisesDao {
    * @returns {Promise<ExerciseSchema>}
    */
   async save(exercise){
-    await this.db.insert(ExerciseSchema).values(exercise)
+    const result = await this.db.insert(ExerciseSchema).values(exercise).returning()
+    return result[0]
   }
 }
 

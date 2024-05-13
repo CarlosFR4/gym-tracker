@@ -5,7 +5,7 @@ import {RadioComponent} from '@components/common/RadioComponent'
 import {i18n, Theme} from '@di/app.module'
 import Sizes from '@theme/Sizes'
 
-export const SelectModal = ({
+const SelectModal = ({
                               items,
                               style,
                               styleOnPress,
@@ -127,3 +127,5 @@ const selectStyle = StyleSheet.create({
     fontWeight: '700',
   },
 })
+
+export default SelectModal
