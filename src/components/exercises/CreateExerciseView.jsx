@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
+import React, {useMemo, useState} from 'react'
 import {router, Stack} from 'expo-router'
 import {Pressable, Text, TextInput, View} from 'react-native'
 import {SafeAreaView} from 'react-native-safe-area-context'
 import styles from './createExercise.style'
 import {FontAwesome} from '@expo/vector-icons'
-import {i18n, Theme, useExercises} from '@di/app.module'
+import {Theme} from '@di/app.module'
 import BodyParts from '@exercises/BodyParts'
 import SelectModal from '@components/common/SelectModal'
 import Categories from '@exercises/Categories'
@@ -12,15 +12,19 @@ import {EmptyString} from 'src/util/constants'
 import SnackBar from '@components/common/SnackBar'
 import Strings from '@locales/Strings'
 
-const categories = Object.entries(Categories).map(([, category]) => ({
-  label: i18n.t(category.name),
-  value: category.value,
-}))
+const getCategories = (i18n) => {
+  return Object.entries(Categories).map(([, category]) => ({
+    label: i18n.t(category.name),
+    value: category.value,
+  }))
+}
 
-const bodyParts = Object.entries(BodyParts).map(([, bodyPart]) => ({
-  label: i18n.t(bodyPart.name),
-  value: bodyPart.value,
-}))
+const getBodyParts = (i18n) => {
+  return Object.entries(BodyParts).map(([, bodyPart]) => ({
+    label: i18n.t(bodyPart.name),
+    value: bodyPart.value,
+  }))
+}
 
 const isValidData = (name, category, bodyPart) => name !== EmptyString && category && bodyPart
 
@@ -29,7 +33,10 @@ const isValidData = (name, category, bodyPart) => name !== EmptyString && catego
  * @returns {JSX.Element}
  * @constructor
  */
-export default function CreateExerciseView() {
+export default function CreateExerciseView({i18n, useExercises}) {
+  const categories = useMemo(() => getCategories(i18n), [i18n])
+  const bodyParts = useMemo(() => getBodyParts(i18n), [i18n])
+
   const [name, setName] = useState(EmptyString)
   const [category, setCategory] = useState(null)
   const [bodyPart, setBodyPart] = useState(bodyParts[0])
@@ -47,7 +54,7 @@ export default function CreateExerciseView() {
 
     addExercise({name, category: category.value, bodyPart: bodyPart.value, image: null})
       .then(() => router.navigate('/exercises'))
-      .catch(err => console.log('error saving', err))
+      .catch(err => console.error('error saving', err))
   }
 
   const showSnackBar = () => {

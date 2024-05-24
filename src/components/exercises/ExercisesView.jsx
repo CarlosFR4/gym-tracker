@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import {Text, Pressable, FlatList, Image, View, TextInput} from 'react-native'
 import {SafeAreaView} from 'react-native-safe-area-context'
 import {router, Stack, useFocusEffect} from 'expo-router'
 import styles from './exercises.style'
 import defaultExerciseImage from '@assets/images/exercise-person.png'
-import {i18n, Theme, useExercises} from '@di/app.module'
+import {Theme} from '@di/app.module'
 import {FontAwesome, FontAwesome6, EvilIcons} from '@expo/vector-icons'
 import {EmptyString} from 'src/util/constants'
 import {createExercise} from 'src/util/routes'
@@ -14,13 +14,15 @@ import {createExercise} from 'src/util/routes'
  *
  * @component
  * @param {Object} props - The properties for the ExercisesView component.
+ * @param {Object} props.i18n - The internationalization object.
+ * @param {function} props.useExercises - The hook for getting exercises.
  * @param {Element} props.ErrorView - A React component to be displayed if there is an error while loading the exercises.
  * @param {function} props.exerciseSchemaToExerciseItem - A function that transforms an exercise schema object into an exercise item.
  * @returns {Element} A React component that displays a list of exercises.
  *
  * @returns {Element} A React component that displays a list of exercises.
  */
-export default function ExercisesView({ErrorView, exerciseSchemaToExerciseItem}) {
+export default function ExercisesView({i18n, useExercises, ErrorView, exerciseSchemaToExerciseItem}) {
   const [exercises, setExercises] = useState([])
   const [error, setError] = useState(null)
   const [searchTerm, setSearchTerm] = useState(EmptyString)
@@ -48,7 +50,7 @@ export default function ExercisesView({ErrorView, exerciseSchemaToExerciseItem})
   return <>
     <Stack.Screen options={{headerShown: false}}/>
     <SafeAreaView style={styles.screen}>
-      <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+      <Header i18n={i18n} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
       <View style={styles.view}>
         <ExercisesList data={filteredExercises}
                        error={error}
@@ -58,7 +60,7 @@ export default function ExercisesView({ErrorView, exerciseSchemaToExerciseItem})
   </>
 }
 
-const Header = ({searchTerm, setSearchTerm}) => <View style={styles.header}>
+const Header = ({i18n, searchTerm, setSearchTerm}) => <View style={styles.header}>
   <View style={styles.headerButtons}>
     <View style={styles.searchBar}>
       <FontAwesome style={styles.searchIcon} name="search" size={24} color={Theme.onPrimary}/>

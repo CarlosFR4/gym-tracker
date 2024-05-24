@@ -1,9 +1,7 @@
 import React, { createContext, useState, useContext } from 'react'
 
-// Create a context
 const ExercisesContext = createContext(undefined, undefined)
 
-// Create a provider component
 export const ExercisesProvider = ({ getAllExercisesUseCase, saveExerciseUseCase, children }) => {
   const [exercises, setExercises] = useState(null)
 
@@ -34,7 +32,6 @@ export const ExercisesProvider = ({ getAllExercisesUseCase, saveExerciseUseCase,
   )
 }
 
-// Create a custom hook to use the exercises context
 export const useExercises = () => {
   const context = useContext(ExercisesContext)
   if (context === undefined) {
