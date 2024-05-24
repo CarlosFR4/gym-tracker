@@ -10,6 +10,7 @@ export default function TabLayout() {
       tabBarActiveBackgroundColor: Theme.surface,
       tabBarInactiveTintColor: Theme.onBackground,
       tabBarActiveTintColor: Theme.secondaryVariant,
+      tabBarHideOnKeyboard: true,
       tabBarItemStyle: {
         flexDirection: 'column',
         alignItems: 'center',
