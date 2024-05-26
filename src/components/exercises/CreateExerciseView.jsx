@@ -2,12 +2,12 @@ import React, {useMemo, useState} from 'react'
 import {router, Stack} from 'expo-router'
 import {Pressable, Text, TextInput, View} from 'react-native'
 import {SafeAreaView} from 'react-native-safe-area-context'
-import styles from './createExercise.style'
+import styles from 'src/components/exercises/create.exercise.style'
 import {FontAwesome} from '@expo/vector-icons'
 import {Theme} from '@di/app.module'
-import BodyParts from '@exercises/BodyParts'
+import BodyParts from 'src/entities/exercises/BodyParts'
 import SelectModal from '@components/common/SelectModal'
-import Categories from '@exercises/Categories'
+import Categories from 'src/entities/exercises/Categories'
 import {EmptyString} from 'src/util/constants'
 import SnackBar from '@components/common/SnackBar'
 import Strings from '@locales/Strings'
@@ -73,7 +73,7 @@ export default function CreateExerciseView({i18n, useExercises}) {
     <SafeAreaView style={styles.screen}>
       <View style={styles.header}>
         <Pressable style={({pressed}) => styles.closeButton(pressed)} onPress={() => router.back()}>
-          <FontAwesome name="times" size={24} color={Theme.onPrimary}/>
+          <FontAwesome name="times" size={24} color={Theme.OnPrimary}/>
         </Pressable>
         <Text style={styles.headerTitle}>{i18n.t(Strings.createExercise)}</Text>
         <Pressable style={({pressed}) => styles.doneButton(pressed)}
@@ -84,7 +84,7 @@ export default function CreateExerciseView({i18n, useExercises}) {
 
       <TextInput style={styles.input}
                  placeholder={i18n.t(Strings.addName)}
-                 placeholderTextColor={Theme.onSecondary}
+                 placeholderTextColor={Theme.OnSecondary}
                  onChangeText={setName}
       />
 
@@ -113,8 +113,8 @@ export default function CreateExerciseView({i18n, useExercises}) {
         visible={visibleSnackBar}
         message={snackBarMessage}
         onHide={() => setVisibleSnackBar(false)}
-        backgroundColor={Theme.error}
-        textColor={Theme.onError}
+        backgroundColor={Theme.Error}
+        textColor={Theme.OnError}
       />
     </SafeAreaView>
   </>

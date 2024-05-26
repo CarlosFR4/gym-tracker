@@ -3,7 +3,10 @@ import {Modal, StyleSheet} from 'react-native'
 import {Pressable, Text, View} from 'react-native'
 import {RadioComponent} from '@components/common/RadioComponent'
 import {i18n, Theme} from '@di/app.module'
-import Sizes from '@theme/Sizes'
+import {GapSizes} from '@theme/Sizes'
+import FontWeight from '@theme/FontWeight'
+import {FlexAlign, FlexDirection, JustifyContent, Percentage100} from '@util/constants'
+import Colors from '@theme/Colors'
 
 const SelectModal = ({
                               items,
@@ -44,7 +47,7 @@ const SelectModal = ({
                             optionStyle={selectStyle.optionItem}
                             textStyle={selectStyle.optionText}
                             buttonStyle={selectStyle.optionButton}
-                            selectedColor={Theme.secondary}/>
+                            selectedColor={Theme.Secondary}/>
           </View>
           <View style={selectStyle.confirmButtonWrapper}>
             <Pressable style={({pressed}) => selectStyle.confirmButton(pressed)}
@@ -63,68 +66,68 @@ const SelectModal = ({
 
 const selectStyle = StyleSheet.create({
   select: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: FlexDirection.Row,
+    justifyContent: JustifyContent.SpaceBetween,
   },
   modalWrapper: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: JustifyContent.Center,
+    alignItems: FlexAlign.Center,
+    backgroundColor: Colors.BlackTransparent,
   },
   modal: {
     width: 300,
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'space-between',
-    backgroundColor: Theme.background,
-    borderRadius: Sizes.large,
-    paddingTop: Sizes.large,
-    paddingBottom: Sizes.medium,
+    flexDirection: FlexDirection.Column,
+    alignItems: FlexAlign.FlexStart,
+    justifyContent: JustifyContent.SpaceBetween,
+    backgroundColor: Theme.Background,
+    borderRadius: GapSizes.ExtraLarge,
+    paddingTop: GapSizes.ExtraLarge,
+    paddingBottom: GapSizes.Large,
   },
   title: {
-    fontSize: Sizes.xxLarge,
-    margin: Sizes.small,
-    paddingStart: Sizes.medium,
-    color: Theme.onPrimary,
-    fontWeight: '700',
+    fontSize: GapSizes.ExtraHuge,
+    margin: GapSizes.Medium,
+    paddingStart: GapSizes.Large,
+    color: Theme.OnPrimary,
+    fontWeight: FontWeight.w700,
   },
   options: {
-    width: '100%',
+    width: Percentage100,
     maxHeight: 500,
   },
   optionItem: pressed => ({
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    padding: Sizes.medium,
-    backgroundColor: pressed ? Theme.surface : Theme.background,
+    justifyContent: JustifyContent.FlexStart,
+    alignItems: FlexAlign.Center,
+    padding: GapSizes.Large,
+    backgroundColor: pressed ? Theme.Surface : Theme.Background,
   }),
   optionText: {
-    fontSize: Sizes.xLarge,
-    marginStart: Sizes.medium,
-    marginEnd: Sizes.medium,
-    color: Theme.onPrimary,
+    fontSize: GapSizes.Huge,
+    marginStart: GapSizes.Large,
+    marginEnd: GapSizes.Large,
+    color: Theme.OnPrimary,
   },
   optionButton: {
-    fontSize: Sizes.xLarge,
-    margin: Sizes.xSmall,
-    color: Theme.onPrimary,
+    fontSize: GapSizes.Huge,
+    margin: GapSizes.Small,
+    color: Theme.OnPrimary,
   },
   confirmButtonWrapper: {
-    width: '100%',
-    alignItems: 'flex-end',
+    width: Percentage100,
+    alignItems: FlexAlign.FlexEnd,
   },
   confirmButton: pressed => ({
-    marginTop: Sizes.small,
-    marginBottom: Sizes.small,
-    marginStart: Sizes.medium,
-    marginEnd: Sizes.medium,
-    padding: Sizes.small,
-    backgroundColor: pressed ? Theme.surface : Theme.background,
+    marginTop: GapSizes.Medium,
+    marginBottom: GapSizes.Medium,
+    marginStart: GapSizes.Large,
+    marginEnd: GapSizes.Large,
+    padding: GapSizes.Medium,
+    backgroundColor: pressed ? Theme.Surface : Theme.Background,
   }),
   confirmButtonText: {
-    color: Theme.primaryVariant,
-    fontWeight: '700',
+    color: Theme.PrimaryVariant,
+    fontWeight: FontWeight.w700,
   },
 })
 

@@ -2,24 +2,24 @@ import React from 'react'
 import {Tabs} from 'expo-router'
 import {FontAwesome5, FontAwesome6, Ionicons} from '@expo/vector-icons'
 import {Theme} from '@di/app.module'
-import Sizes from '@theme/Sizes'
+import {GapSizes} from '@theme/Sizes'
 
 export default function TabLayout() {
   return (
     <Tabs screenOptions={{
-      tabBarActiveBackgroundColor: Theme.surface,
-      tabBarInactiveTintColor: Theme.onBackground,
-      tabBarActiveTintColor: Theme.secondaryVariant,
+      tabBarActiveBackgroundColor: Theme.Surface,
+      tabBarInactiveTintColor: Theme.OnBackground,
+      tabBarActiveTintColor: Theme.SecondaryVariant,
       tabBarHideOnKeyboard: true,
       tabBarItemStyle: {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingBottom: Sizes.xSmall,
-        paddingTop: Sizes.xSmall,
+        paddingBottom: GapSizes.Small,
+        paddingTop: GapSizes.Small,
       },
       tabBarStyle: {
-        backgroundColor: Theme.background,
+        backgroundColor: Theme.Background,
         height: 60,
         borderTopWidth: 0,
       },

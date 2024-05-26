@@ -1,16 +1,16 @@
 const DarkTheme = {
-    primary: '#10439f',
-  primaryVariant: '#874ccc',
-  secondary: '#c65bcf',
-  secondaryVariant: '#f27bbd',
-  background: '#19162d',
-  surface: '#373456',
-  error: '#d20062',
-  onPrimary: '#f7fdfd',
-  onSecondary: '#b2b2c4',
-  onBackground: '#b2b2c4',
-  onSurface: '#e4e4ec',
-  onError: '#f7fdfd',
+  Primary: '#10439f',
+  PrimaryVariant: '#874ccc',
+  Secondary: '#c65bcf',
+  SecondaryVariant: '#f27bbd',
+  Background: '#19162d',
+  Surface: '#373456',
+  Error: '#d20062',
+  OnPrimary: '#f7fdfd',
+  OnSecondary: '#b2b2c4',
+  OnBackground: '#b2b2c4',
+  OnSurface: '#e4e4ec',
+  OnError: '#f7fdfd',
 }
 
 export default DarkTheme

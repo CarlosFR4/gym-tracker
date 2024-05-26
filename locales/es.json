@@ -28,5 +28,9 @@
   "nameRequired": "Nombre requerido",
   "categoryRequired": "Categoría requerida",
   "bodyPartRequired": "Parte del cuerpo requerida",
-  "unknownError": "Error desconocido"
+  "unknownError": "Error desconocido",
+  "workout": "Entrenamiento",
+  "quickStart": "Inicio rápido",
+  "myWorkouts": "Mis rutinas",
+  "sampleWorkouts": "Ejemplos de rutinas"
 }

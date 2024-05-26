@@ -1,14 +1,15 @@
 import React, {useEffect} from 'react'
 import {View, Text, StyleSheet, Pressable} from 'react-native'
-import Sizes from '@theme/Sizes'
+import {GapSizes} from '@theme/Sizes'
+import {FlexAlign, FlexDirection, FlexPosition, JustifyContent} from '@util/constants'
 
-export const Duration = {
+export const SnackbarDuration = {
   Short: 2000,
   Medium: 3000,
   Long: 5000,
 }
 
-export const Position = {
+export const SnackbarPosition = {
   Top: 'top',
   Bottom: 'bottom',
 }
@@ -18,8 +19,8 @@ const Snackbar = ({
                     message,
                     actionText,
                     onActionPress,
-                    duration = Duration.Medium,
-                    position = Position.Bottom,
+                    duration = SnackbarDuration.Medium,
+                    position = SnackbarPosition.Bottom,
                     textColor,
                     actionTextColor,
                     backgroundColor,
@@ -42,7 +43,7 @@ const Snackbar = ({
   return visible && <View
     style={[
       styles.container,
-      position === Position.Top ? styles.topContainer : styles.bottomContainer,
+      position === SnackbarPosition.Top ? styles.topContainer : styles.bottomContainer,
       containerStyle,
       {backgroundColor: backgroundColor},
     ]}
@@ -68,26 +69,26 @@ const Snackbar = ({
 
 const styles = StyleSheet.create({
   container: {
-    padding: Sizes.xLarge,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    position: 'absolute',
-    left: Sizes.none,
-    right: Sizes.none,
+    padding: GapSizes.Huge,
+    flexDirection: FlexDirection.Row,
+    alignItems: FlexAlign.Center,
+    justifyContent: JustifyContent.SpaceBetween,
+    position: FlexPosition.Absolute,
+    left: GapSizes.None,
+    right: GapSizes.None,
   },
   topContainer: {
-    top: Sizes.none,
+    top: GapSizes.None,
   },
   bottomContainer: {
-    bottom: Sizes.none,
+    bottom: GapSizes.None,
   },
   messageText: {
-    fontSize: Sizes.xLarge,
+    fontSize: GapSizes.Huge,
   },
   actionText: {
-    marginLeft: Sizes.medium,
-    fontSize: Sizes.xLarge,
+    marginLeft: GapSizes.Large,
+    fontSize: GapSizes.Huge,
   },
 })
 

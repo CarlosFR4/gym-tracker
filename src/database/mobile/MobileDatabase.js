@@ -1,6 +1,6 @@
 import ExercisesDao from 'src/database/mobile/ExercisesDao'
 import {migrate} from 'drizzle-orm/expo-sqlite/migrator'
-
+import WorkoutDao from '@database/mobile/WorkoutDao'
 
 /**
  * MobileDatabase class
@@ -29,6 +29,10 @@ class MobileDatabase {
 
   exercisesDao() {
     return new ExercisesDao(this.db)
+  }
+
+  workoutDao() {
+    return new WorkoutDao(this.db)
   }
 }
 

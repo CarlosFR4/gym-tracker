@@ -1,5 +1,5 @@
-import BodyParts from '@exercises/BodyParts'
-import Exercise from '@exercises/Exercise'
+import BodyParts from '@entities/exercises/BodyParts'
+import Exercise from '@entities/exercises/Exercise'
 
 /**
  * @typedef ExerciseItem

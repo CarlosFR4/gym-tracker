@@ -11,10 +11,12 @@
         "@assets": "./assets",
         "@usecases": "./src/usecases",
         "@hooks": "./src/hooks",
-        "@exercises": "./src/exercises",
+        "@entities": "./src/entities",
         "@database": "./src/database",
         "@theme": "./src/theme",
-        "@contexts": "./src/contexts"
+        "@contexts": "./src/contexts",
+        "@util": "./src/util",
+        "@mappers": "./src/mappers"
       },
       "extensions": [".js", ".jsx", ".tsx", ".ios.js", ".android.js"]
     }],

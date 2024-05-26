@@ -5,7 +5,7 @@ import {router, Stack, useFocusEffect} from 'expo-router'
 import styles from './exercises.style'
 import defaultExerciseImage from '@assets/images/exercise-person.png'
 import {Theme} from '@di/app.module'
-import {FontAwesome, FontAwesome6, EvilIcons} from '@expo/vector-icons'
+import {FontAwesome, EvilIcons} from '@expo/vector-icons'
 import {EmptyString} from 'src/util/constants'
 import {createExercise} from 'src/util/routes'
 
@@ -61,25 +61,25 @@ export default function ExercisesView({i18n, useExercises, ErrorView, exerciseSc
 }
 
 const Header = ({i18n, searchTerm, setSearchTerm}) => <View style={styles.header}>
-  <View style={styles.headerButtons}>
+  <View style={styles.headerContainer}>
     <View style={styles.searchBar}>
-      <FontAwesome style={styles.searchIcon} name="search" size={24} color={Theme.onPrimary}/>
+      <FontAwesome style={styles.searchIcon} name="search" size={24} color={Theme.OnPrimary}/>
       <TextInput style={styles.searchInput}
                  value={searchTerm}
-                 placeholderTextColor={Theme.onSecondary}
+                 placeholderTextColor={Theme.OnSecondary}
                  placeholder={i18n.t('exercise')}
                  onChangeText={text => setSearchTerm(text)}/>
       {searchTerm !== EmptyString && (
         <Pressable onPress={() => setSearchTerm(EmptyString)}>
-          <EvilIcons style={styles.clearSearchIcon} name="close" size={24} color={Theme.onPrimary}/>
+          <EvilIcons style={styles.clearSearchIcon} name="close" size={24} color={Theme.OnPrimary}/>
         </Pressable>
       )}
     </View>
     <Pressable style={({pressed}) => styles.headerButton(pressed)}>
-      <FontAwesome name="filter" size={24} color={Theme.onPrimary}/>
+      <FontAwesome name="filter" size={24} color={Theme.OnPrimary}/>
     </Pressable>
     <Pressable style={({pressed}) => styles.headerButton(pressed)}  onPress={() => router.push(createExercise)}>
-      <FontAwesome6 name="add" size={24} color={Theme.onPrimary}/>
+      <FontAwesome name="plus" size={24} color={Theme.OnPrimary}/>
     </Pressable>
   </View>
 </View>

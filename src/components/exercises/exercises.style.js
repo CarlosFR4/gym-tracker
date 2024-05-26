@@ -1,95 +1,95 @@
 import {StyleSheet} from 'react-native'
-import Sizes from '@theme/Sizes'
+import {GapSizes} from '@theme/Sizes'
 import {Theme} from '@di/app.module'
 import FontWeight from '@theme/FontWeight'
-import {FlexDirection} from 'src/util/constants'
+import {Auto, FlexAlign, FlexDirection, JustifyContent, Percentage100, ResizeMode} from '@util/constants'
 
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: Theme.background,
+    backgroundColor: Theme.Background,
   },
   view: {
-    width: '100%',
+    width: Percentage100,
     maxHeight: '90%',
   },
   input: {
-    fontSize: Sizes.xLarge,
-    width: 'auto',
-    padding: Sizes.medium,
-    margin: Sizes.medium,
+    fontSize: GapSizes.Huge,
+    width: Auto,
+    padding: GapSizes.Large,
+    margin: GapSizes.Large,
   },
   card: (pressed) => ({
     flexDirection: FlexDirection.Row,
-    alignSelf: 'flex-start',
-    width: '100%',
-    padding: Sizes.small,
-    backgroundColor: pressed ? Theme.surface : Theme.background,
+    alignSelf: FlexAlign.FlexStart,
+    width: Percentage100,
+    padding: GapSizes.Medium,
+    backgroundColor: pressed ? Theme.Surface : Theme.Background,
   }),
   header: {
     flexDirection: FlexDirection.Row,
-    alignItems: 'center',
+    alignItems: FlexAlign.Center,
     height: 70,
   },
-  headerButtons: {
-    margin: Sizes.xSmall,
+  headerContainer: {
+    margin: GapSizes.Small,
     flexDirection: FlexDirection.Row,
-    alignItems: 'center',
-    justifyContent: 'flex-end',
+    alignItems: FlexAlign.Center,
+    justifyContent: JustifyContent.FlexEnd,
     flex: 1,
   },
   headerButton: pressed => ({
-    padding: Sizes.medium,
-    margin: Sizes.xSmall,
+    padding: GapSizes.Large,
+    margin: GapSizes.Small,
     borderRadius: 55,
-    backgroundColor: pressed ? Theme.surface : Theme.background,
+    backgroundColor: pressed ? Theme.Surface : Theme.Background,
   }),
   searchBar: {
     flex: 1,
-    margin: Sizes.small,
-    borderRadius: Sizes.xSmall,
-    backgroundColor: Theme.surface,
+    margin: GapSizes.Medium,
+    borderRadius: GapSizes.Small,
+    backgroundColor: Theme.Surface,
     flexDirection: FlexDirection.Row,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: FlexAlign.Center,
+    justifyContent: JustifyContent.Center,
   },
   searchIcon: {
-    margin: Sizes.small,
+    margin: GapSizes.Medium,
   },
   clearSearchIcon: {
-    margin: Sizes.small,
+    margin: GapSizes.Medium,
   },
   searchInput: {
     flex: 1,
-    color: Theme.onSurface,
+    color: Theme.OnSurface,
     fontWeight: FontWeight.w500,
-    marginStart: Sizes.small,
-    marginEnd: Sizes.small,
+    marginStart: GapSizes.Medium,
+    marginEnd: GapSizes.Medium,
   },
   exerciseIconContainer: {
     width: 70,
     height: 70,
-    padding: Sizes.small,
+    padding: GapSizes.Medium,
   },
   exerciseIcon: {
-    width: '100%',
-    height: '100%',
-    resizeMode: 'contain',
-    borderRadius: Sizes.small,
+    width: Percentage100,
+    height: Percentage100,
+    resizeMode: ResizeMode.Contain,
+    borderRadius: GapSizes.Medium,
   },
   exerciseData: {
-    padding: Sizes.medium,
+    padding: GapSizes.Large,
   },
   exerciseName: {
-    fontSize: Sizes.xLarge,
-    color: Theme.onPrimary,
+    fontSize: GapSizes.Huge,
+    color: Theme.OnPrimary,
     fontWeight: FontWeight.w500,
-    paddingBottom: 5,
+    paddingBottom: GapSizes.Small,
   },
   exerciseBodyPart: {
-    fontSize: Sizes.large,
+    fontSize: GapSizes.ExtraLarge,
     fontWeight: FontWeight.w400,
-    color: Theme.onSecondary,
+    color: Theme.OnSecondary,
   },
 })
 

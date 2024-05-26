@@ -1,16 +1,3 @@
-import React from 'react'
-import {Text, SafeAreaView, View} from 'react-native'
-import {Stack} from 'expo-router'
+import {WorkoutMenuScreen} from '@di/component.module'
 
-export default function Workout() {
-  return <SafeAreaView>
-    <Stack.Screen
-      options={{
-        headerShown: false
-      }}
-    />
-    <View>
-      <Text>Workout</Text>
-    </View>
-  </SafeAreaView>
-}
+export default WorkoutMenuScreen

@@ -1,12 +1,27 @@
 const EmptyString = ''
 const Auto = 'auto'
+const Flex = 'flex'
+const Percentage100 = '100%'
 
 const FlexDirection = {
   Row: 'row',
   Column: 'column',
 }
 
-const AlignItems = {
+const FlexPosition = {
+  Absolute: 'absolute',
+  Relative: 'relative',
+  Static: 'static',
+}
+
+const TextTransform = {
+  None: 'none',
+  Uppercase: 'uppercase',
+  Lowercase: 'lowercase',
+  Capitalize: 'capitalize',
+}
+
+const FlexAlign = {
   Center: 'center',
   FlexStart: 'flex-start',
   FlexEnd: 'flex-end',
@@ -23,10 +38,19 @@ const JustifyContent = {
   SpaceEvenly: 'space-evenly',
 }
 
+const ResizeMode = {
+  Contain: 'contain',
+}
+
 export {
   EmptyString,
   Auto,
   FlexDirection,
-  AlignItems,
+  FlexAlign,
   JustifyContent,
+  TextTransform,
+  Flex,
+  FlexPosition,
+  ResizeMode,
+  Percentage100,
 }

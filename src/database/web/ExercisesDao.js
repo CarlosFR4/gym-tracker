@@ -1,3 +1,5 @@
+const TABLE = 'exercises'
+
 /**
  * Data Access Object for exercises.
  * @class
@@ -7,8 +9,11 @@
  * @method save - Save an exercise
  */
 class ExercisesDao {
-  constructor() {
-    this._data = []
+  /**
+   * @param db {FakeDatabase}
+   */
+  constructor(db) {
+    this.db = db
   }
 
   /**
@@ -17,7 +22,7 @@ class ExercisesDao {
    */
   async getAllExercises() {
     return new Promise((resolve) => {
-      resolve(this._data)
+      resolve(this.db.select(TABLE))
     })
   }
 
@@ -28,7 +33,7 @@ class ExercisesDao {
    */
   async getExerciseById(id) {
     return new Promise((resolve) => {
-      resolve(this._data.find(exercise => exercise.id === id))
+      resolve(this.db.select(TABLE).find(exercise => exercise.id === id))
     })
   }
 
@@ -38,7 +43,7 @@ class ExercisesDao {
    */
   async save(exercise) {
     new Promise((resolve) => {
-      this._data.push(exercise)
+      this.db.insert(TABLE, exercise)
       resolve()
     })
   }

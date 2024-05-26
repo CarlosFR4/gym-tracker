@@ -1,16 +1,16 @@
 const LightTheme = {
-  primary: '#35155d',
-  primaryVariant: '#512b81',
-  secondary: '#4477ce',
-  secondaryVariant: '#2157e0',
-  background: '#f7fdfd',
-  surface: '#dfe5e5',
-  error: '#cc2d59',
-  onPrimary: '#19162d',
-  onSecondary: '#787883',
+  Primary: '#35155d',
+  PrimaryVariant: '#512b81',
+  Secondary: '#4477ce',
+  SecondaryVariant: '#2157e0',
+  Background: '#f7fdfd',
+  Surface: '#dfe5e5',
+  Error: '#cc2d59',
+  OnPrimary: '#19162d',
+  OnSecondary: '#787883',
   onBackground: '#19162d',
-  onSurface: '#0c081c',
-  onError: '#f7fdfd',
+  OnSurface: '#0c081c',
+  OnError: '#f7fdfd',
 }
 
 export default LightTheme

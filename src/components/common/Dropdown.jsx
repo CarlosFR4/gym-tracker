@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {StyleSheet} from 'react-native'
 import {FlatList, Pressable, Text, View} from 'react-native'
 import {FontAwesome} from '@expo/vector-icons'
+import {FlexDirection} from '@util/constants'
 
 export const Dropdown = ({
                            items,
@@ -47,9 +48,9 @@ const DropdownItem = ({item, style, itemStyle, onSelect}) =>
 
 const dropdownStyle = StyleSheet.create({
   dropdown: {
-    flexDirection: 'column',
+    flexDirection: FlexDirection.Column,
   },
   dropdownSelect: {
-    flexDirection: 'row',
+    flexDirection: FlexDirection.Row,
   },
 })
