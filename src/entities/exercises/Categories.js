@@ -7,6 +7,7 @@ const Categories = Object.freeze({
   RepsOnly: {name: 'repsOnly', value: 5},
   CardioExercise: {name: 'cardioExercise', value: 6},
   Duration: {name: 'duration', value: 7},
+  Other: {name: 'other', value: 8},
 })
 
 export default Categories

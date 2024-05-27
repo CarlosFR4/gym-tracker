@@ -14,6 +14,7 @@ const ExerciseSchema = sqliteTable('exercises', {
   image: text('image'),
   category: integer('category'),
   bodyPart: integer('body_part'),
+  systemName: text('system_name'),
 })
 
 export default ExerciseSchema

@@ -8,6 +8,27 @@
       "when": 1715406457974,
       "tag": "0000_glossy_loki",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1716826467405,
+      "tag": "0001_salty_korg",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1716826657099,
+      "tag": "0002_redundant_tigra",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1716846000328,
+      "tag": "0003_rainy_purifiers",
+      "breakpoints": true
     }
   ]
 }

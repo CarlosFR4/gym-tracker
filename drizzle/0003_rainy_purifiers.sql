@@ -1,0 +1,1 @@
+ALTER TABLE exercises ADD `system_name` text;

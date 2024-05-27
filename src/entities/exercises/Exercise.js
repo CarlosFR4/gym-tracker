@@ -2,7 +2,7 @@
  * Represents an exercise.
  * @class
  */
-class Exercise {
+export default class Exercise {
   /**
    * Creates an exercise.
    * @param {string} name - The name of the exercise.
@@ -15,5 +15,3 @@ class Exercise {
     this.bodyPart = bodyPart
   }
 }
-
-export default Exercise

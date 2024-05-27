@@ -8,8 +8,8 @@
   "chest": "Pecho",
   "legs": "Pierna",
   "shoulders": "Hombro",
-  "other": "Otro",
-  "olympic": "Olimpio",
+  "back": "Espalda",
+  "olympic": "Olímpico",
   "fullBody": "Cuerpo completo",
   "cardio": "Cardio",
   "createExercise": "Crear ejercicio",
@@ -21,6 +21,7 @@
   "machine": "Máquina/Otro",
   "bodyWeight": "Peso corporal",
   "assistedBody": "Peso corporal asistido",
+  "repsOnly": "Solo repeticiones",
   "cardioExercise": "Cardio",
   "duration": "Duración",
   "done": "Hecho",
@@ -32,5 +33,6 @@
   "workout": "Entrenamiento",
   "quickStart": "Inicio rápido",
   "myWorkouts": "Mis rutinas",
-  "sampleWorkouts": "Ejemplos de rutinas"
+  "sampleWorkouts": "Ejemplos de rutinas",
+  "other": "Otro"
 }

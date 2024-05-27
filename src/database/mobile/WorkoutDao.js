@@ -1,6 +1,6 @@
 import WorkoutSchema from '@database/WorkoutSchema'
 import ExerciseSchema from '@database/ExerciseSchema'
-import ExercisesToWorkoutSchema from '@database/ExercisesToWorkoutSchema'
+import ExerciseToWorkoutSchema from '@database/ExerciseToWorkoutSchema'
 import {eq} from 'drizzle-orm/sql/expressions/conditions'
 
 /**
@@ -35,8 +35,8 @@ class ExercisesDao {
   async getExercisesByWorkout(workoutId) {
     return await this.db.select()
       .from(ExerciseSchema)
-      .innerJoin(ExercisesToWorkoutSchema, eq(ExerciseSchema.id, ExercisesToWorkoutSchema.exerciseId))
-      .innerJoin(WorkoutSchema, eq(WorkoutSchema.id, ExercisesToWorkoutSchema.workoutId))
+      .innerJoin(ExerciseToWorkoutSchema, eq(ExerciseSchema.id, ExerciseToWorkoutSchema.exerciseId))
+      .innerJoin(WorkoutSchema, eq(WorkoutSchema.id, ExerciseToWorkoutSchema.workoutId))
       .where(eq(WorkoutSchema.id, workoutId))
       .all()
   }
@@ -59,7 +59,7 @@ class ExercisesDao {
   async save(workout, exercisesIds) {
     const result = await this.db.insert(WorkoutSchema).values(workout).returning()
 
-    exercisesIds && this.db.insert(ExercisesToWorkoutSchema).values(exercisesIds.map(exerciseId => ({
+    exercisesIds && this.db.insert(ExerciseToWorkoutSchema).values(exercisesIds.map(exerciseId => ({
       workoutId: result[0].id,
       exerciseId,
     })))

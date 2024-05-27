@@ -5,8 +5,7 @@ const BodyParts = Object.freeze({
   Chest: {name: 'chest', value: 3},
   Legs: {name: 'legs', value: 4},
   Shoulders: {name: 'shoulders', value: 5},
-  Other: {name: 'other', value: 6},
-  Olympic: {name: 'olympic', value: 7},
+  Back: {name: 'back', value: 6},
   FullBody: {name: 'fullBody', value: 8},
   Cardio: {name: 'cardio', value: 9},
 })
