@@ -1,5 +1,8 @@
+import workoutSchema from '@database/WorkoutSchema'
+
 const TABLE_WORKOUTS = 'workouts'
 const TABLE_EXERCISES = 'exercises'
+const TABLE_EXERCISES_WORKOUTS = 'exercises_to_workouts'
 
 /**
  * Data Access Object for exercises.
@@ -9,7 +12,7 @@ const TABLE_EXERCISES = 'exercises'
  * @method getExerciseById - Retrieve an exercise by its id
  * @method save - Save an exercise
  */
-class ExercisesDao {
+class WorkoutsDao {
   constructor(db) {
     this.db = db
   }
@@ -49,10 +52,10 @@ class ExercisesDao {
    * @returns {Promise}
    */
   async save(workout, exercisesIds) {
-    exercisesIds && (workout.exercises = exercisesIds)
-    const result = await this.db.insert(TABLE_WORKOUTS, workout)
-    return result[0]
+    const workoutId = await this.db.insert(TABLE_WORKOUTS, workout).returning({insertedId: workoutSchema.id})
+    const exercises = exercisesIds && exercisesIds.map(exerciseId => ({workoutId, exerciseId}))
+    exercises && await this.db.insert(TABLE_EXERCISES_WORKOUTS, exercises)
   }
 }
 
-export default ExercisesDao
+export default WorkoutsDao

@@ -1,6 +1,6 @@
 import ExercisesDao from 'src/database/web/ExercisesDao'
 import FakeDatabase from '@database/web/FakeDatabase'
-import WorkoutDao from '@database/web/WorkoutDao'
+import WorkoutsDao from '@database/web/WorkoutsDao'
 
 class WebDatabase {
   constructor() {
@@ -11,7 +11,7 @@ class WebDatabase {
   }
 
   workoutDao() {
-    return new WorkoutDao(this.db)
+    return new WorkoutsDao(this.db)
   }
 }
 

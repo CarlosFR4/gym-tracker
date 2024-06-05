@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.0",
+    "@react-native-async-storage/async-storage": "^1.23.1",
     "@testing-library/react-hooks": "^8.0.1",
     "@types/jest": "^29.5.12",
     "babel-plugin-inline-import": "^3.0.0",

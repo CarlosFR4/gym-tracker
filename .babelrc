@@ -16,7 +16,8 @@
         "@theme": "./src/theme",
         "@contexts": "./src/contexts",
         "@util": "./src/util",
-        "@mappers": "./src/mappers"
+        "@mappers": "./src/mappers",
+        "@defaults": "./defaults"
       },
       "extensions": [".js", ".jsx", ".tsx", ".ios.js", ".android.js"]
     }],
