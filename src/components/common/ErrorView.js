@@ -20,12 +20,12 @@ const styles = StyleSheet.create({
   },
 })
 
-const ErrorView = () => (
+const ErrorView = () =>
   <View style={styles.container}>
     <View style={styles.view}>
       <Text style={styles.text}>Profile</Text>
     </View>
   </View>
-)
+
 
 export default ErrorView

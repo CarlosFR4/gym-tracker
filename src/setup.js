@@ -5,7 +5,7 @@ export const setup = async (
   setDefaultExercisesVersion,
   saveExerciseUseCase,
 ) => {
-  if (defaultExercisesVersion && defaultExercises.version > defaultExercisesVersion) {
+  if (defaultExercisesVersion && defaultExercises.version > defaultExercisesVersion || !defaultExercisesVersion) {
     defaultExercises.data.forEach(exercise => saveExerciseUseCase(exercise))
     await setDefaultExercisesVersion(defaultExercises.version)
   }
