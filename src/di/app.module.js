@@ -11,7 +11,8 @@ import LightTheme from '@theme/LightTheme'
 import {getAllExercisesUseCase as getAllExercises} from '@usecases/exercises/getAllExercisesUseCase'
 import {saveExerciseUseCase as saveExercise} from '@usecases/exercises/saveExerciseUseCase'
 import {ExercisesProvider as ExercisesProviderComponent, useExercises} from '@contexts/ExerciseContext'
-import {getDefaultExercisesVersion, setDefaultExercisesVersion} from 'src/AppConfig'
+import {getDefaultExercisesVersion, setDefaultExercisesVersion} from 'src/AppDataConfigManager'
+import {setup as setupAppFunction} from 'src/setup'
 
 const db = (() => {
   if (Platform.OS === 'ios' || Platform.OS === 'android') {
@@ -37,6 +38,12 @@ const Theme = colorScheme === 'dark' ? DarkTheme : LightTheme
 let defaultExercisesVersion = null
 getDefaultExercisesVersion().then(version => defaultExercisesVersion = version)
 
+const setup = () => setupAppFunction(
+  defaultExercisesVersion,
+  setDefaultExercisesVersion,
+  saveExerciseUseCase,
+)
+
 export {
   ExercisesProvider,
   useExercises,
@@ -45,4 +52,5 @@ export {
   Theme,
   defaultExercisesVersion,
   setDefaultExercisesVersion,
+  setup,
 }

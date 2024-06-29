@@ -1,9 +1,12 @@
-import {defaultExercisesVersion, setDefaultExercisesVersion} from '@di/app.module'
 import defaultExercises from '@defaults/exercises.json'
 
-const setup = async () => {
-  if (defaultExercisesVersion || defaultExercises.version > defaultExercisesVersion) {
-    // fill the database with the default exercises
+export const setup = async (
+  defaultExercisesVersion,
+  setDefaultExercisesVersion,
+  saveExerciseUseCase,
+) => {
+  if (defaultExercisesVersion && defaultExercises.version > defaultExercisesVersion) {
+    defaultExercises.data.forEach(exercise => saveExerciseUseCase(exercise))
     await setDefaultExercisesVersion(defaultExercises.version)
   }
 }

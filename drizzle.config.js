@@ -6,5 +6,6 @@ export default {
     './src/database/ExerciseToWorkoutSchema.js',
   ],
   driver: 'expo',
+  dialect: 'sqlite',
   out: './drizzle'
 }

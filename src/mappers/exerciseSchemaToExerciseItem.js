@@ -13,10 +13,11 @@ import Exercise from '@entities/exercises/Exercise'
  * @param {string} name
  * @param {string} image
  * @param {number} bodyPart
+ * @param {number} category
  * @param {import(i18n-js).I18n} i18n
  * @returns {ExerciseItem}
  */
 export default function exerciseSchemaToExerciseItem({name, image, bodyPart}, i18n) {
   const bodyPartName = Object.entries(BodyParts).find(([, entry]) => entry.value === bodyPart)[1].name
-  return new Exercise(name, image, i18n.t(bodyPartName))
+  return new Exercise(name, image, i18n.t(bodyPartName), '')
 }

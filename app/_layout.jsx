@@ -2,7 +2,7 @@ import React from 'react'
 import {Stack} from 'expo-router/stack'
 import {ExercisesProvider} from '@di/app.module'
 
-export default function RootLayout() {
+export default async function RootLayout() {
   return (
     <ExercisesProvider>
       <Stack>
