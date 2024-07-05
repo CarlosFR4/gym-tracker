@@ -34,5 +34,7 @@
   "quickStart": "Quick Start",
   "myWorkouts": "My Workouts",
   "sampleWorkouts": "Sample Workouts",
-  "other": "Other"
+  "other": "Other",
+  "createWorkout": "Create workout",
+  "addExercise": "Add Exercise"
 }
