@@ -9,4 +9,5 @@ export const saveWorkoutsUseCase = async (workoutsDao, workouts) => {
     workout: {name, lastPerformed},
     exercisesIds: exercises.map(exercise => exercise.id)
   }))
+
 }

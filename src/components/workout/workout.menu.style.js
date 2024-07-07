@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native'
 import {Theme} from '@di/app.module'
-import {FlexDirection, JustifyContent} from '@util/constants'
+import {FlexAlign, Flex, FlexDirection, JustifyContent, TextTransform} from '@util/constants'
 import {GapSizes} from '@theme/Sizes'
 
 const styles = StyleSheet.create({
@@ -9,8 +9,7 @@ const styles = StyleSheet.create({
     backgroundColor: Theme.Background,
   },
   header: {
-    flexDirection: FlexDirection.Row,
-    justifyContent: JustifyContent.SpaceBetween,
+    alignItems: FlexAlign.FlexStart,
     height: 70,
   },
   headerText: {
@@ -18,10 +17,21 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: Theme.OnPrimary,
   },
-  headerButtonContainer: {
-    margin: GapSizes.ExtraLarge,
+  sectionHeader: {
+    flexDirection: FlexDirection.Row,
+    display: Flex,
+    margin: GapSizes.Large,
+    padding: GapSizes.Large,
+    justifyContent: JustifyContent.SpaceAround,
+    alignItems: FlexAlign.Center,
   },
-  headerButton: (pressed) => ({
+  sectionHeaderText: {
+    flex: 1,
+    fontSize: GapSizes.ExtraLarge,
+    color: Theme.OnBackground,
+    textTransform: TextTransform.Uppercase,
+  },
+  sectionHeaderButton: (pressed) => ({
     padding: GapSizes.ExtraLarge,
     borderRadius: 55,
     backgroundColor: pressed ? Theme.Surface : Theme.Background,

@@ -19,7 +19,13 @@ const styles = StyleSheet.create({
     padding: GapSizes.Large,
     margin: GapSizes.Large,
   },
-
+  card: (pressed) => ({
+    flexDirection: FlexDirection.Row,
+    alignSelf: FlexAlign.FlexStart,
+    width: Percentage100,
+    padding: GapSizes.Medium,
+    backgroundColor: pressed ? Theme.Surface : Theme.Background,
+  }),
   header: {
     flexDirection: FlexDirection.Row,
     alignItems: FlexAlign.Center,
@@ -59,6 +65,31 @@ const styles = StyleSheet.create({
     fontWeight: FontWeight.w500,
     marginStart: GapSizes.Medium,
     marginEnd: GapSizes.Medium,
+  },
+  exerciseIconContainer: {
+    width: 70,
+    height: 70,
+    padding: GapSizes.Medium,
+  },
+  exerciseIcon: {
+    width: Percentage100,
+    height: Percentage100,
+    resizeMode: ResizeMode.Contain,
+    borderRadius: GapSizes.Medium,
+  },
+  exerciseData: {
+    padding: GapSizes.Large,
+  },
+  exerciseName: {
+    fontSize: GapSizes.Huge,
+    color: Theme.OnPrimary,
+    fontWeight: FontWeight.w500,
+    paddingBottom: GapSizes.Small,
+  },
+  exerciseBodyPart: {
+    fontSize: GapSizes.ExtraLarge,
+    fontWeight: FontWeight.w400,
+    color: Theme.OnSecondary,
   },
 })
 
