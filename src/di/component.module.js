@@ -7,6 +7,8 @@ import exerciseSchemaToExerciseItemMapper from '@mappers/exerciseSchemaToExercis
 import SelectModal from '@components/common/SelectModal'
 import SnackBar from '@components/common/SnackBar'
 import WorkoutMenuView from '@components/workout/WorkoutMenuView'
+import SelectExerciseView from '@components/workout/SelectExerciseView'
+import CreateWorkoutView from '@components/workout/CreateWorkoutView'
 
 const exerciseSchemaToExerciseItem = (data) => exerciseSchemaToExerciseItemMapper(data, i18n)
 
@@ -26,10 +28,22 @@ const WorkoutMenuScreen = () => <WorkoutMenuView
   i18n={i18n}
 />
 
+const CreateWorkoutScreen = () => <CreateWorkoutView
+  i18n={i18n}
+/>
+
+const SelectExerciseScreen = () => <SelectExerciseView
+  i18n={i18n}
+  useExercises={useExercises}
+  exerciseSchemaToExerciseItem={exerciseSchemaToExerciseItem}
+/>
+
 export {
   SnackBar,
   SelectModal,
   CreateExerciseScreen,
   ExercisesScreen,
   WorkoutMenuScreen,
+  CreateWorkoutScreen,
+  SelectExerciseScreen,
 }

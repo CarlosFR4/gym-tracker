@@ -1,5 +1,9 @@
-const createExercise = '/createExercise'
+const CreateExercise = '/exercise/create'
+const CreateWorkout = '/workout/create'
+const SelectExercise = '/workout/create/selectExercise'
 
 export {
-  createExercise,
+  CreateWorkout,
+  CreateExercise,
+  SelectExercise,
 }
