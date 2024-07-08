@@ -7,6 +7,7 @@ const DarkTheme = {
   Surface: '#373456',
   Error: '#d20062',
   OnPrimary: '#f7fdfd',
+  OnPrimaryVariant: '#f7fdfd',
   OnSecondary: '#b2b2c4',
   OnBackground: '#b2b2c4',
   OnSurface: '#e4e4ec',

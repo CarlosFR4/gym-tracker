@@ -42,6 +42,12 @@ const ResizeMode = {
   Contain: 'contain',
 }
 
+const Position = {
+  Absolute: 'absolute',
+  Relative: 'relative',
+  Static: 'static',
+}
+
 export {
   EmptyString,
   Auto,
@@ -53,4 +59,5 @@ export {
   FlexPosition,
   ResizeMode,
   Percentage100,
+  Position,
 }

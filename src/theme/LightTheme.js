@@ -7,6 +7,7 @@ const LightTheme = {
   Surface: '#dfe5e5',
   Error: '#cc2d59',
   OnPrimary: '#19162d',
+  OnPrimaryVariant: '#efebfd',
   OnSecondary: '#787883',
   onBackground: '#19162d',
   OnSurface: '#0c081c',

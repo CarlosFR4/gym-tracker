@@ -22,7 +22,7 @@
       "extensions": [".js", ".jsx", ".tsx", ".ios.js", ".android.js"]
     }],
     ["inline-import", {
-      "extensions": [".sql"]
+      "extensions": [".sql", ".svg"]
     }]
   ]
 }

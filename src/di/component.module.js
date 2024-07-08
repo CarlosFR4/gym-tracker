@@ -1,5 +1,5 @@
 import React from 'react'
-import {i18n, useExercises} from '@di/app.module'
+import {CurrentTheme, i18n, useExercises} from '@di/app.module'
 import ExercisesView from '@components/exercises/ExercisesView'
 import CreateExerciseView from '@components/exercises/CreateExerciseView'
 import ErrorView from '@components/common/ErrorView'
@@ -36,6 +36,8 @@ const SelectExerciseScreen = () => <SelectExerciseView
   i18n={i18n}
   useExercises={useExercises}
   exerciseSchemaToExerciseItem={exerciseSchemaToExerciseItem}
+  errorView={ErrorView}
+  currentTheme={CurrentTheme}
 />
 
 export {

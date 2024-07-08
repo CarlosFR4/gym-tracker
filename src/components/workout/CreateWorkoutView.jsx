@@ -8,7 +8,6 @@ import {SelectExercise} from '@util/routes'
 
 export default function CreateWorkoutView({i18n}) {
   const params = useLocalSearchParams()
-  console.log(params)
 
   const [workoutName, setWorkoutName] = useState('')
   return <>

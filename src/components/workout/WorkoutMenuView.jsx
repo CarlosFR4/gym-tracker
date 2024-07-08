@@ -1,10 +1,11 @@
 import React from 'react'
-import {Stack} from 'expo-router'
+import {router, Stack} from 'expo-router'
 import {SafeAreaView} from 'react-native-safe-area-context'
 import {Pressable, ScrollView, Text, View} from 'react-native'
 import styles from '@components/workout/workout.menu.style'
 import {Theme} from '@di/app.module'
 import {FontAwesome} from '@expo/vector-icons'
+import {CreateWorkout} from '@util/routes'
 
 export default function WorkoutMenuView({i18n}) {
   return <>
@@ -12,20 +13,14 @@ export default function WorkoutMenuView({i18n}) {
     <SafeAreaView style={styles.screen}>
       <View style={styles.header}>
         <Text style={styles.headerText}>{i18n.t('workout')}</Text>
-      </View>
-      <ScrollView>
-        <View style={styles.sectionHeader}>
-          <Text style={styles.sectionHeaderText}>{i18n.t('quickStart')}</Text>
-        </View>
-        <View style={styles.sectionHeader}>
-          <Text style={styles.sectionHeaderText}>{i18n.t('myWorkouts')}</Text>
-          <Pressable style={({pressed}) => styles.sectionHeaderButton(pressed)}>
+        <View style={styles.headerButtonContainer}>
+          <Pressable style={({pressed}) => styles.headerButton(pressed)}
+                     onPress={() => router.push(CreateWorkout)}>
             <FontAwesome name="plus" size={20} color={Theme.OnPrimary}/>
           </Pressable>
         </View>
-        <View style={styles.sectionHeader}>
-          <Text style={styles.sectionHeaderText}>{i18n.t('sampleWorkouts')}</Text>
-        </View>
+      </View>
+      <ScrollView>
       </ScrollView>
     </SafeAreaView>
   </>
